@@ -1,0 +1,13 @@
+{
+  "name": "digetra",
+  "private": true,
+  "workspaces": [
+    "next-app"
+  ],
+  "scripts": {
+    "build": "npm run build -w next-app",
+    "dev": "npm run dev -w next-app",
+    "start": "npm run start -w next-app",
+    "lint": "npm run lint -w next-app"
+  }
+}
