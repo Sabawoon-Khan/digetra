@@ -1,0 +1,335 @@
+@import "tailwindcss";
+
+:root {
+  --digetra-bg: #fafafa;
+  --digetra-surface: #ffffff;
+  --digetra-ink: #0a0a0a;
+  --digetra-muted: #737373;
+  --digetra-accent: #171717;
+  --digetra-accent-soft: #404040;
+  --digetra-border: #e5e5e5;
+  --digetra-border-strong: #d4d4d4;
+}
+
+@theme inline {
+  --color-background: var(--digetra-bg);
+  --color-foreground: var(--digetra-ink);
+  --font-sans: var(--font-digetra);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--digetra-bg);
+  color: var(--digetra-ink);
+  font-family: var(--font-digetra), system-ui, sans-serif;
+}
+
+/* ---------- AI / Data flow diagrams (only animated UI on the site) ---------- */
+.ai-flow-line {
+  stroke-dasharray: 10 18;
+  animation: flow-dash 1.45s linear infinite;
+}
+.data-flow-line {
+  stroke-dasharray: 8 14;
+  animation: flow-dash-reverse 1.25s linear infinite;
+}
+/* Data pipeline diagram — left-to-right “flow” (sources → dashboards) */
+.data-flow-line-ltr {
+  stroke-dasharray: 8 14;
+  animation: flow-dash 1.25s linear infinite;
+}
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+@keyframes flow-dash-reverse {
+  to {
+    stroke-dashoffset: 22;
+  }
+}
+.ai-flow-line-slow {
+  stroke-dasharray: 8 18;
+  animation: flow-dash-slow 1.85s linear infinite;
+}
+.ai-flow-line-fine {
+  stroke-dasharray: 7 13;
+  animation: flow-dash 1.55s linear infinite;
+  opacity: 0.94;
+}
+@keyframes flow-dash-slow {
+  to {
+    stroke-dashoffset: -26;
+  }
+}
+/* Subtle “live system” pulse on orchestration / LLM nodes */
+.ai-flow-node-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ai-node-pulse 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@keyframes ai-node-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.018);
+    opacity: 0.94;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-flow-line,
+  .data-flow-line,
+  .data-flow-line-ltr,
+  .ai-flow-line-slow,
+  .ai-flow-line-fine {
+    animation: none;
+    stroke-dasharray: unset;
+    opacity: 1;
+  }
+  .ai-flow-node-pulse,
+  .data-flow-node-pulse {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Data flow diagram canvas (neutral grid — pairs with DataFlowDiagram) */
+.data-flow-canvas {
+  position: relative;
+  isolation: isolate;
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    165deg,
+    rgba(250, 250, 250, 0.98) 0%,
+    #ffffff 45%,
+    rgba(245, 245, 244, 0.55) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.data-flow-canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.1) 55%, transparent 100%);
+}
+.data-flow-canvas svg {
+  position: relative;
+  z-index: 1;
+}
+/* Pipeline node — same rhythm as AI orchestration pulse */
+.data-flow-node-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ai-node-pulse 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* AI flow diagram canvas (grid + ambient) */
+.ai-flow-canvas {
+  position: relative;
+  isolation: isolate;
+  border-radius: 1.375rem;
+  background: linear-gradient(
+    165deg,
+    rgba(250, 250, 250, 0.95) 0%,
+    #ffffff 42%,
+    rgba(238, 242, 255, 0.35) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.ai-flow-canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.12) 55%, transparent 100%);
+}
+.ai-flow-canvas svg {
+  position: relative;
+  z-index: 1;
+}
+/* Softer “pipe” look: glow + consistent caps (SVG paths set strokeLinecap) */
+.ai-flow-connectors path {
+  filter: drop-shadow(0 0 0.5px rgba(99, 102, 241, 0.45))
+    drop-shadow(0 1px 3px rgba(79, 70, 229, 0.14));
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-flow-connectors path {
+    filter: none;
+  }
+}
+
+/* GenAI showcase — staggered entrance (used by GenAIShowcase.tsx) */
+@keyframes gen-ai-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.gen-ai-showcase-hero {
+  animation: gen-ai-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.04s both;
+}
+.gen-ai-showcase-diagram {
+  animation: gen-ai-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+.gen-ai-showcase-highlights {
+  animation: gen-ai-fade-up 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
+}
+.gen-ai-showcase-chips {
+  animation: gen-ai-fade-up 0.76s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+}
+
+/* Data showcase — entrance (DataShowcase.tsx) */
+.data-showcase-hero {
+  animation: gen-ai-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.04s both;
+}
+.data-showcase-highlights {
+  animation: gen-ai-fade-up 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both;
+}
+.data-showcase-diagram {
+  animation: gen-ai-fade-up 0.82s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+.data-showcase-chips {
+  animation: gen-ai-fade-up 0.76s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+/* Data analytics — capabilities block (DataAnalytics.tsx) */
+.data-analytics-intro {
+  animation: gen-ai-fade-up 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.04s both;
+}
+.data-analytics-pillar {
+  animation: gen-ai-fade-up 0.68s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.data-analytics-pillars > .data-analytics-pillar:nth-child(1) {
+  animation-delay: 0.08s;
+}
+.data-analytics-pillars > .data-analytics-pillar:nth-child(2) {
+  animation-delay: 0.16s;
+}
+.data-analytics-pillars > .data-analytics-pillar:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.data-analytics-plug {
+  animation: gen-ai-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gen-ai-showcase-hero,
+  .gen-ai-showcase-diagram,
+  .gen-ai-showcase-highlights,
+  .gen-ai-showcase-chips,
+  .data-showcase-hero,
+  .data-showcase-highlights,
+  .data-showcase-diagram,
+  .data-showcase-chips,
+  .data-analytics-intro,
+  .data-analytics-pillar,
+  .data-analytics-plug {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- flat card hover ---------- */
+.card-flat {
+  border: 1px solid var(--digetra-border);
+  background: var(--digetra-surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-flat:hover {
+  border-color: var(--digetra-border-strong);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* ---------- accent underline (headlines) ---------- */
+.accent-mark {
+  box-decoration-clone: clone;
+  -webkit-box-decoration-clone: clone;
+  background: linear-gradient(transparent 65%, rgba(23, 23, 23, 0.12) 65%);
+}
+
+/* ---------- focus ---------- */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--digetra-accent);
+  outline-offset: 3px;
+}
+
+/* ---------- primary button ---------- */
+.btn-primary {
+  background: var(--digetra-accent);
+  color: #fff;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.btn-primary:hover {
+  background: var(--digetra-accent-soft);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ---------- hero (background + type) ---------- */
+.hero-surface {
+  background-color: #fafafa;
+}
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+@media (min-width: 640px) {
+  .hero-grid {
+    background-size: 56px 56px;
+  }
+}
+/* Light bottom veil — grid stays strong in the headline area */
+.hero-vignette {
+  background: linear-gradient(
+    180deg,
+    rgba(250, 250, 250, 0) 0%,
+    rgba(250, 250, 250, 0.25) 55%,
+    rgba(250, 250, 250, 0.5) 100%
+  );
+}
+.hero-noise {
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.font-display {
+  font-family: var(--font-display), var(--font-digetra), system-ui, sans-serif;
+}
