@@ -1,38 +1,59 @@
+import Image from "next/image";
+
 import { Reveal } from "./Reveal";
 
-const projects = [
+type CoverPattern = "cross" | "dots" | "lines" | "grid" | "chat";
+
+const projects: Array<{
+  title: string;
+  tag: string;
+  summary: string;
+  cover: { bg: string; pattern: CoverPattern };
+  index: string;
+}> = [
   {
-    title: "Regional logistics portal",
-    tag: "Web Platform",
+    title: "Smart factory operations",
+    tag: "Manufacturing",
     summary:
-      "Unified shipment tracking and partner onboarding — cutting manual status requests by design.",
+      "Shop-floor visibility, line integrations, and operational dashboards — fewer surprises on throughput, quality, and downtime.",
     cover: {
       bg: "bg-neutral-800",
-      pattern: "cross",
+      pattern: "grid",
     },
     index: "01",
   },
   {
-    title: "Healthcare clinic network",
-    tag: "Cloud Migration",
+    title: "Enterprise MIS — seed production",
+    tag: "MIS & operations",
     summary:
-      "Zero-downtime move to a managed cloud stack with backup and recovery playbooks.",
+      "Management information system for seed production: batches, inventory, lot traceability, and executive reporting at enterprise scale.",
     cover: {
-      bg: "bg-neutral-900",
+      bg: "bg-stone-800",
       pattern: "dots",
     },
     index: "02",
   },
   {
-    title: "FinTech analytics suite",
-    tag: "Data & Integrations",
+    title: "Muska",
+    tag: "Women's mental health",
     summary:
-      "Real-time dashboards fed from core banking APIs with role-based access controls.",
+      "Mobile app focused on women's mental health — calm UX, privacy-first design, and supportive guided experiences.",
     cover: {
-      bg: "bg-stone-800",
+      bg: "bg-neutral-900",
       pattern: "lines",
     },
     index: "03",
+  },
+  {
+    title: "AI chatbots & assistants",
+    tag: "Conversational AI",
+    summary:
+      "Enterprise chatbots and copilots with grounded answers, guardrails, and clear handoff when humans need to step in.",
+    cover: {
+      bg: "bg-zinc-800",
+      pattern: "chat",
+    },
+    index: "04",
   },
 ];
 
@@ -42,7 +63,7 @@ function CoverArt({
   index,
 }: {
   bg: string;
-  pattern: string;
+  pattern: "cross" | "dots" | "lines" | "grid" | "chat";
   index: string;
 }) {
   return (
@@ -51,6 +72,13 @@ function CoverArt({
         <div className="absolute inset-4 grid grid-cols-6 grid-rows-5 gap-1.5 opacity-30" aria-hidden>
           {Array.from({ length: 30 }).map((_, i) => (
             <div key={i} className="rounded-sm border border-white/25" />
+          ))}
+        </div>
+      )}
+      {pattern === "grid" && (
+        <div className="absolute inset-5 grid grid-cols-10 grid-rows-8 gap-px opacity-[0.28]" aria-hidden>
+          {Array.from({ length: 80 }).map((_, i) => (
+            <div key={i} className="rounded-[1px] bg-white/35" />
           ))}
         </div>
       )}
@@ -66,6 +94,17 @@ function CoverArt({
           {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className="h-px w-full bg-white" />
           ))}
+        </div>
+      )}
+      {pattern === "chat" && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-10 opacity-[0.26]" aria-hidden>
+          <div className="h-12 w-[72%] rounded-2xl border border-white/35 bg-white/10" />
+          <div className="h-10 w-[58%] rounded-2xl border border-white/25 bg-white/5" />
+          <div className="flex gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-white/50" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/35" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+          </div>
         </div>
       )}
       <div className="absolute inset-0 flex items-end justify-between p-5">
@@ -87,7 +126,7 @@ export function Portfolio() {
       className="scroll-mt-24 border-b border-neutral-200 bg-white py-24 sm:py-32"
       aria-labelledby="work-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">
@@ -105,7 +144,20 @@ export function Portfolio() {
           </div>
         </Reveal>
 
-        <div className="reveal-stagger mt-16 grid gap-8 lg:grid-cols-3">
+        <Reveal className="mt-12 sm:mt-14">
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50 shadow-[0_20px_70px_-40px_rgba(0,0,0,0.14)]">
+            <Image
+              src="/images/digentra-portfolio-work.png"
+              alt="Abstract visualization of shipped work, craft, and delivered outcomes"
+              width={1376}
+              height={768}
+              className="h-44 w-full object-cover object-center sm:h-52"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
+        </Reveal>
+
+        <div className="reveal-stagger mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {projects.map((project) => (
             <Reveal key={project.title}>
               <article className="card-flat group flex h-full flex-col overflow-hidden rounded-lg">
@@ -114,12 +166,14 @@ export function Portfolio() {
                   pattern={project.cover.pattern}
                   index={project.index}
                 />
-                <div className="flex flex-1 flex-col p-7">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <span className="inline-flex w-fit rounded-md border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-[0.625rem] font-semibold uppercase tracking-wider text-neutral-600">
                     {project.tag}
                   </span>
-                  <h3 className="mt-4 text-xl font-bold tracking-tight text-neutral-950">{project.title}</h3>
-                  <p className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-neutral-600">
+                  <h3 className="mt-3 text-lg font-bold tracking-tight text-neutral-950 sm:text-xl">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-[0.875rem] leading-relaxed text-neutral-600 sm:text-[0.9375rem]">
                     {project.summary}
                   </p>
                   <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-neutral-950">

@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --digetra-bg: #fafafa;
-  --digetra-surface: #ffffff;
-  --digetra-ink: #0a0a0a;
-  --digetra-muted: #737373;
-  --digetra-accent: #171717;
-  --digetra-accent-soft: #404040;
-  --digetra-border: #e5e5e5;
-  --digetra-border-strong: #d4d4d4;
+  --digentra-bg: #fafafa;
+  --digentra-surface: #ffffff;
+  --digentra-ink: #0a0a0a;
+  --digentra-muted: #737373;
+  --digentra-accent: #171717;
+  --digentra-accent-soft: #404040;
+  --digentra-border: #e5e5e5;
+  --digentra-border-strong: #d4d4d4;
 }
 
 @theme inline {
-  --color-background: var(--digetra-bg);
-  --color-foreground: var(--digetra-ink);
-  --font-sans: var(--font-digetra);
+  --color-background: var(--digentra-bg);
+  --color-foreground: var(--digentra-ink);
+  --font-sans: var(--font-digentra);
 }
 
 html {
@@ -31,9 +31,9 @@ html {
 }
 
 body {
-  background: var(--digetra-bg);
-  color: var(--digetra-ink);
-  font-family: var(--font-digetra), system-ui, sans-serif;
+  background: var(--digentra-bg);
+  color: var(--digentra-ink);
+  font-family: var(--font-digentra), system-ui, sans-serif;
 }
 
 /* ---------- AI / Data flow diagrams (only animated UI on the site) ---------- */
@@ -267,12 +267,12 @@ body {
 
 /* ---------- flat card hover ---------- */
 .card-flat {
-  border: 1px solid var(--digetra-border);
-  background: var(--digetra-surface);
+  border: 1px solid var(--digentra-border);
+  background: var(--digentra-surface);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .card-flat:hover {
-  border-color: var(--digetra-border-strong);
+  border-color: var(--digentra-border-strong);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
@@ -285,18 +285,18 @@ body {
 
 /* ---------- focus ---------- */
 .focus-ring:focus-visible {
-  outline: 2px solid var(--digetra-accent);
+  outline: 2px solid var(--digentra-accent);
   outline-offset: 3px;
 }
 
 /* ---------- primary button ---------- */
 .btn-primary {
-  background: var(--digetra-accent);
+  background: var(--digentra-accent);
   color: #fff;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 .btn-primary:hover {
-  background: var(--digetra-accent-soft);
+  background: var(--digentra-accent-soft);
 }
 .btn-primary:active {
   transform: scale(0.98);
@@ -331,5 +331,6 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .font-display {
-  font-family: var(--font-display), var(--font-digetra), system-ui, sans-serif;
+  font-family: var(--font-display), var(--font-digentra), system-ui, sans-serif;
 }
+

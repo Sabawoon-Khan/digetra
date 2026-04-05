@@ -1,9 +1,12 @@
+import Link from "next/link";
+
 const footerLinks = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#why-us", label: "Why Us" },
-  { href: "#work", label: "Work" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/capacity-building", label: "Training" },
+  { href: "/#why-us", label: "Why Us" },
+  { href: "/#work", label: "Work" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const social = [
@@ -43,12 +46,12 @@ export function Footer() {
     <footer className="border-t border-neutral-200 bg-neutral-950 text-neutral-500">
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
-          <a
-            href="#top"
+          <Link
+            href="/#top"
             className="focus-ring font-display text-lg font-bold tracking-tight text-white"
           >
-            Digetra
-          </a>
+            Digentra
+          </Link>
 
           <nav
             className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm"
@@ -81,14 +84,22 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-neutral-800 pt-8 text-xs text-neutral-600 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Digetra</p>
-          <a
-            href="mailto:hello@digetra.com"
-            className="focus-ring w-fit text-neutral-500 transition hover:text-neutral-300"
-          >
-            hello@digetra.com
-          </a>
+        <div className="mt-10 flex flex-col gap-3 border-t border-neutral-800 pt-8 text-xs text-neutral-600 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6">
+          <p>© {year} Digentra · Concord, CA</p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+            <a
+              href="mailto:info@digtra.net"
+              className="focus-ring w-fit text-neutral-500 transition hover:text-neutral-300"
+            >
+              info@digtra.net
+            </a>
+            <a
+              href="tel:+19254485675"
+              className="focus-ring w-fit text-neutral-500 transition hover:text-neutral-300"
+            >
+              +1 (925) 448-5675
+            </a>
+          </div>
         </div>
       </div>
     </footer>

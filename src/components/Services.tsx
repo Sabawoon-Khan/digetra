@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Reveal } from "./Reveal";
 
 const services = [
@@ -101,6 +103,17 @@ export function Services() {
             </p>
           </div>
         </Reveal>
+
+        <div className="relative mt-12 overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-[0_20px_70px_-40px_rgba(0,0,0,0.12)] sm:mt-14">
+          <Image
+            src="/images/digentra-services-cloud.png"
+            alt="Abstract layers suggesting cloud infrastructure, modular systems, and delivered services"
+            width={1376}
+            height={768}
+            className="h-48 w-full object-cover object-center sm:h-56 md:h-60"
+            sizes="(max-width: 1152px) 100vw, 1152px"
+          />
+        </div>
 
         <div className="reveal-stagger mt-14 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:mt-16 lg:grid-cols-3 lg:gap-6">
           {services.map((item, index) => (

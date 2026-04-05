@@ -1,32 +1,66 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#why-us", label: "Why Us" },
-  { href: "#work", label: "Work" },
-  { href: "#contact", label: "Contact" },
+type HashNav = { kind: "hash"; id: string; label: string };
+type RouteNav = {
+  kind: "route";
+  href: string;
+  label: string;
+  /** Section id on the homepage for scroll-spy highlighting */
+  homeSectionId: string;
+};
+
+const navItems: (HashNav | RouteNav)[] = [
+  { kind: "hash", id: "about", label: "About" },
+  { kind: "hash", id: "services", label: "Services" },
+  {
+    kind: "route",
+    href: "/capacity-building",
+    label: "Training",
+    homeSectionId: "capacity-building",
+  },
+  { kind: "hash", id: "why-us", label: "Why Us" },
+  { kind: "hash", id: "work", label: "Work" },
+  { kind: "hash", id: "contact", label: "Contact" },
 ];
 
-/** All page sections in scroll order (includes blocks not in the nav). */
+/** All homepage sections in scroll order (includes blocks not in the nav). */
 const ALL_SECTION_IDS = [
   "about",
   "ai",
   "data",
   "services",
+  "capacity-building",
   "why-us",
   "work",
   "contact",
 ] as const;
 
-const NAV_IDS = new Set(navLinks.map((l) => l.href.slice(1)));
+function isNavActive(
+  item: HashNav | RouteNav,
+  pathname: string,
+  activeId: string,
+): boolean {
+  const scrollId = pathname === "/" ? activeId : "";
+  if (item.kind === "hash") {
+    return pathname === "/" && scrollId === item.id;
+  }
+  return (
+    pathname === item.href ||
+    (pathname === "/" && scrollId === item.homeSectionId)
+  );
+}
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState<string>("");
+
+  const hashPrefix = pathname === "/" ? "" : "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -36,6 +70,8 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const updateActive = () => {
       const doc = document.documentElement;
       const scrollBottom = window.scrollY + window.innerHeight;
@@ -53,7 +89,15 @@ export function Header() {
         const top = el.getBoundingClientRect().top + window.scrollY;
         if (top <= pos) current = id;
       }
-      setActiveId(NAV_IDS.has(current) ? current : "");
+      const navHashIds = new Set(
+        navItems.filter((i): i is HashNav => i.kind === "hash").map((i) => i.id),
+      );
+      const navRouteSectionIds = new Set(
+        navItems.filter((i): i is RouteNav => i.kind === "route").map((i) => i.homeSectionId),
+      );
+      const inNav =
+        navHashIds.has(current) || navRouteSectionIds.has(current);
+      setActiveId(inNav ? current : "");
     };
 
     updateActive();
@@ -63,7 +107,7 @@ export function Header() {
       window.removeEventListener("scroll", updateActive);
       window.removeEventListener("resize", updateActive);
     };
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -72,23 +116,21 @@ export function Header() {
     };
   }, [open]);
 
-  const linkClass = (href: string) => {
-    const id = href.slice(1);
-    const isActive = activeId === id;
+  const linkClass = (item: HashNav | RouteNav) => {
+    const active = isNavActive(item, pathname, activeId);
     return [
       "focus-ring rounded-md px-3 py-2 text-[0.8125rem] font-medium transition-colors lg:px-4",
-      isActive
+      active
         ? "font-semibold text-neutral-950 underline decoration-neutral-950 decoration-2 underline-offset-[10px]"
         : "text-neutral-500 hover:text-neutral-900",
     ].join(" ");
   };
 
-  const mobileLinkClass = (href: string) => {
-    const id = href.slice(1);
-    const isActive = activeId === id;
+  const mobileLinkClass = (item: HashNav | RouteNav) => {
+    const active = isNavActive(item, pathname, activeId);
     return [
       "focus-ring rounded-md px-4 py-3 text-[0.9375rem] font-medium transition-colors",
-      isActive
+      active
         ? "font-semibold text-neutral-950 underline decoration-neutral-950 decoration-2 underline-offset-8"
         : "text-neutral-800 hover:text-neutral-950",
     ].join(" ");
@@ -103,31 +145,46 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex min-h-[4rem] h-[4.25rem] max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8">
-        <a
-          href="#top"
+        <Link
+          href="/#top"
           className="focus-ring font-display text-2xl font-bold tracking-tight text-neutral-950 sm:text-[1.75rem]"
         >
-          Digetra
-        </a>
+          Digentra
+        </Link>
 
         <nav
           className="hidden items-center md:flex md:gap-2 md:pl-2"
           aria-label="Primary"
         >
           <div className="flex items-center gap-2 lg:gap-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={linkClass(link.href)}
-                aria-current={activeId === link.href.slice(1) ? "page" : undefined}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const active = isNavActive(item, pathname, activeId);
+              if (item.kind === "hash") {
+                return (
+                  <a
+                    key={item.id}
+                    href={`${hashPrefix}#${item.id}`}
+                    className={linkClass(item)}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={linkClass(item)}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
           <a
-            href="#contact"
+            href={`${hashPrefix}#contact`}
             className="focus-ring btn-primary ml-4 inline-flex shrink-0 items-center justify-center rounded-md px-4 py-2 text-[0.8125rem] font-semibold lg:ml-6"
           >
             Get started
@@ -167,19 +224,35 @@ export function Header() {
         className={`border-t border-neutral-200 bg-white md:hidden ${open ? "block" : "hidden"}`}
       >
         <nav className="flex flex-col gap-1 px-5 py-4" aria-label="Mobile">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={mobileLinkClass(link.href)}
-              aria-current={activeId === link.href.slice(1) ? "page" : undefined}
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const active = isNavActive(item, pathname, activeId);
+            if (item.kind === "hash") {
+              return (
+                <a
+                  key={item.id}
+                  href={`${hashPrefix}#${item.id}`}
+                  className={mobileLinkClass(item)}
+                  aria-current={active ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              );
+            }
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={mobileLinkClass(item)}
+                aria-current={active ? "page" : undefined}
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <a
-            href="#contact"
+            href={`${hashPrefix}#contact`}
             className="focus-ring btn-primary mt-3 rounded-md px-5 py-3 text-center text-sm font-semibold"
             onClick={() => setOpen(false)}
           >

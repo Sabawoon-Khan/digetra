@@ -1,5 +1,6 @@
 import { About } from "@/components/About";
 import { AISolutions } from "@/components/AISolutions";
+import { CapacityBuildingPreview } from "@/components/CapacityBuildingPreview";
 import { Contact } from "@/components/Contact";
 import { DataAnalytics } from "@/components/DataAnalytics";
 import { Footer } from "@/components/Footer";
@@ -25,6 +26,7 @@ export default function Home() {
         <AISolutions />
         <DataAnalytics />
         <Services />
+        <CapacityBuildingPreview />
         <WhyChoose />
         <Portfolio />
         <Contact />

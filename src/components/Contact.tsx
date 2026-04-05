@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Reveal } from "./Reveal";
 import { ContactForm } from "./ContactForm";
 
@@ -27,7 +29,20 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <div className="mx-auto mt-16 grid max-w-5xl gap-12 lg:grid-cols-5 lg:gap-16">
+        <Reveal className="mt-10 sm:mt-12">
+          <div className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-[0_18px_56px_-32px_rgba(0,0,0,0.12)]">
+            <Image
+              src="/images/digentra-contact-open.png"
+              alt="Soft abstract visual suggesting an open conversation and clear next steps"
+              width={1376}
+              height={768}
+              className="h-36 w-full object-cover object-center sm:h-40"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+        </Reveal>
+
+        <div className="mx-auto mt-12 grid max-w-5xl gap-12 sm:mt-14 lg:grid-cols-5 lg:gap-16">
           <Reveal className="lg:col-span-2">
             <div className="card-flat rounded-lg bg-white p-8">
               <h3 className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-neutral-400">
@@ -37,19 +52,23 @@ export function Contact() {
                 <li>
                   <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">Email</span>
                   <a
-                    href="mailto:hello@digetra.com"
+                    href="mailto:info@digtra.net"
                     className="focus-ring mt-1 block rounded font-semibold text-neutral-950 transition hover:text-neutral-600"
                   >
-                    hello@digetra.com
+                    info@digentra.net
                   </a>
+                </li>
+                <li>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">Location</span>
+                  <p className="mt-1 font-semibold text-neutral-950">Concord, CA</p>
                 </li>
                 <li>
                   <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">Phone</span>
                   <a
-                    href="tel:+15555550100"
+                    href="tel:+19254485675"
                     className="focus-ring mt-1 block rounded font-semibold text-neutral-950 transition hover:text-neutral-600"
                   >
-                    +1 (555) 555-0100
+                    +1 (925) 448-5675
                   </a>
                 </li>
               </ul>

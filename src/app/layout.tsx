@@ -3,7 +3,7 @@ import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
-  variable: "--font-digetra",
+  variable: "--font-digentra",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -16,11 +16,11 @@ const display = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Digetra — Digital & IT Services",
+  title: "Digentra — Digital & IT Services",
   description:
     "Technology-focused digital and IT services: cloud, custom software, security, and managed support. Clear delivery, lasting partnerships.",
   openGraph: {
-    title: "Digetra — Digital & IT Services",
+    title: "Digentra — Digital & IT Services",
     description:
       "Dependable digital solutions — from cloud and infrastructure to custom software.",
   },

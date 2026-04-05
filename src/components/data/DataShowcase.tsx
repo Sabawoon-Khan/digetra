@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { DataFlowDiagram } from "./DataFlowDiagram";
 
 const useCases = ["Executive KPIs", "Revenue analytics", "Operations dashboards", "Experimentation"];
@@ -43,6 +45,17 @@ export function DataShowcase() {
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
             From raw systems to trusted metrics and live dashboards — one clear flow, end to end.
           </p>
+        </div>
+
+        <div className="relative mt-10 overflow-hidden rounded-2xl border border-neutral-200/90 bg-neutral-100/40 shadow-[0_18px_60px_-34px_rgba(0,0,0,0.14)] sm:mt-12">
+          <Image
+            src="/images/digentra-data-metrics.png"
+            alt="Abstract visualization of metrics, analytics, and data flowing into decisions"
+            width={1376}
+            height={768}
+            className="h-44 w-full object-cover object-center sm:h-52 md:h-56"
+            sizes="(max-width: 1152px) 100vw, 1152px"
+          />
         </div>
 
         <div className="data-showcase-diagram mt-10 sm:mt-12">

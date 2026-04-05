@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Reveal } from "./Reveal";
 
 const points = [
@@ -53,7 +55,7 @@ export function WhyChoose() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">
-              Why Digetra
+              Why Digentra
             </p>
             <h2
               id="why-heading"
@@ -65,6 +67,19 @@ export function WhyChoose() {
             <p className="mx-auto mt-5 max-w-xl text-lg text-neutral-600">
               Calm, capable, and precise — for organizations that value follow-through.
             </p>
+          </div>
+        </Reveal>
+
+        <Reveal className="mt-12 sm:mt-14">
+          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-[0_22px_72px_-38px_rgba(0,0,0,0.14)]">
+            <Image
+              src="/images/digentra-why-partner.png"
+              alt="Abstract composition suggesting trust, balance, and long-term partnership"
+              width={1376}
+              height={768}
+              className="h-48 w-full object-cover object-center sm:h-52"
+              sizes="(max-width: 896px) 100vw, 896px"
+            />
           </div>
         </Reveal>
 

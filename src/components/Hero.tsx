@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Hero() {
   const enterpriseFocus = [
     "Cloud & infrastructure",
@@ -16,8 +18,20 @@ export function Hero() {
 
       <div className="relative mx-auto flex min-h-[calc(100dvh-4.5rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] max-w-6xl flex-col justify-center px-4 py-14 sm:px-6 sm:py-20 lg:min-h-[calc(100svh-5rem)] lg:px-8">
         <div className="mx-auto w-full max-w-5xl text-center">
+          <div className="relative mb-8 overflow-hidden rounded-2xl border border-neutral-200/80 bg-neutral-100/60 shadow-[0_12px_48px_-28px_rgba(0,0,0,0.15)] sm:mb-10">
+            <Image
+              src="/images/digentra-hero-top-strip.png"
+              alt=""
+              width={1376}
+              height={768}
+              className="h-28 w-full object-cover object-center sm:h-36"
+              priority
+              sizes="(max-width: 640px) 100vw, 1024px"
+            />
+          </div>
+
           <p className="mb-5 inline-flex items-center rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-[0.625rem] font-semibold uppercase tracking-[0.2em] text-neutral-600 sm:text-[0.6875rem]">
-            Digetra
+            Digentra
           </p>
 
           <h1 className="font-display text-[1.85rem] font-bold leading-[1.12] tracking-[-0.035em] text-neutral-950 text-balance sm:text-4xl md:text-5xl lg:text-[3.25rem]">
@@ -46,6 +60,20 @@ export function Hero() {
             >
               View capabilities
             </a>
+          </div>
+
+          <div className="mx-auto mt-12 w-full max-w-4xl sm:mt-14">
+            <div className="relative overflow-hidden rounded-2xl border border-neutral-200/90 bg-neutral-100/50 shadow-[0_28px_90px_-36px_rgba(0,0,0,0.22)] ring-1 ring-black/[0.03]">
+              <Image
+                src="/images/digentra-hero-ai.png"
+                alt="Abstract visualization of connected systems, data flow, and reliable digital infrastructure"
+                width={1376}
+                height={768}
+                className="h-auto w-full object-cover"
+                priority
+                sizes="(max-width: 1024px) 100vw, 896px"
+              />
+            </div>
           </div>
         </div>
 

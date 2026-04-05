@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Reveal } from "./Reveal";
 
 const stats = [
@@ -28,10 +30,23 @@ export function About() {
               <span className="accent-mark">driven by precision</span>
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-600">
-              Digetra is a technology company built on clear communication,
+              Digentra is a technology company built on clear communication,
               disciplined delivery, and long-term partnerships. We bridge strategy
               and execution so every engagement feels intentional.
             </p>
+          </div>
+        </Reveal>
+
+        <Reveal className="mt-12 sm:mt-14">
+          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50 shadow-[0_20px_70px_-40px_rgba(0,0,0,0.18)]">
+            <Image
+              src="/images/digentra-about-precision.png"
+              alt="Abstract composition suggesting precision, structure, and trusted partnerships"
+              width={1376}
+              height={768}
+              className="h-auto w-full object-cover"
+              sizes="(max-width: 1024px) 100vw, 896px"
+            />
           </div>
         </Reveal>
 

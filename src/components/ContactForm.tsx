@@ -2,12 +2,47 @@
 
 import { useState } from "react";
 
-export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+const INFO_EMAIL = "info@digtra.net";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+export function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sent");
+    setErrorMessage(null);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const name = String(fd.get("name") ?? "").trim();
+    const email = String(fd.get("email") ?? "").trim();
+    const message = String(fd.get("message") ?? "").trim();
+
+    if (!name || !email || !message) {
+      setErrorMessage("Please fill in all fields.");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+
+      if (!res.ok) {
+        setErrorMessage(data.error ?? "Something went wrong. Please try again.");
+        setStatus("idle");
+        return;
+      }
+
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setErrorMessage("Network error. Please try again or email us directly.");
+      setStatus("idle");
+    }
   }
 
   if (status === "sent") {
@@ -25,8 +60,11 @@ export function ContactForm() {
         <p className="mt-4 text-lg font-bold text-neutral-950">Message sent</p>
         <p className="mt-2 text-sm text-neutral-600">
           We&apos;ll respond within one business day. You can also email{" "}
-          <a className="font-semibold text-neutral-950 underline underline-offset-2 hover:text-neutral-600" href="mailto:hello@digetra.com">
-            hello@digetra.com
+          <a
+            className="font-semibold text-neutral-950 underline underline-offset-2 hover:text-neutral-600"
+            href={`mailto:${INFO_EMAIL}`}
+          >
+            {INFO_EMAIL}
           </a>
         </p>
       </div>
@@ -38,6 +76,11 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+      {errorMessage ? (
+        <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900" role="alert">
+          {errorMessage}
+        </p>
+      ) : null}
       <div>
         <label htmlFor="contact-name" className="block text-sm font-semibold text-neutral-700">
           Name
@@ -48,6 +91,7 @@ export function ContactForm() {
           type="text"
           autoComplete="name"
           required
+          disabled={status === "sending"}
           className={inputClass}
           placeholder="Your name"
         />
@@ -62,6 +106,7 @@ export function ContactForm() {
           type="email"
           autoComplete="email"
           required
+          disabled={status === "sending"}
           className={inputClass}
           placeholder="you@company.com"
         />
@@ -75,15 +120,17 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
+          disabled={status === "sending"}
           className={`${inputClass} resize-y`}
           placeholder="Tell us about your project or question…"
         />
       </div>
       <button
         type="submit"
-        className="focus-ring btn-primary w-full rounded-md py-3.5 text-[0.9375rem] font-semibold transition sm:w-auto sm:px-10"
+        disabled={status === "sending"}
+        className="focus-ring btn-primary w-full rounded-md py-3.5 text-[0.9375rem] font-semibold transition enabled:hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-10"
       >
-        Send message
+        {status === "sending" ? "Sending…" : "Send message"}
       </button>
     </form>
   );
