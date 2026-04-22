@@ -52,23 +52,25 @@ export function Contact() {
                 <li>
                   <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">Email</span>
                   <a
-                    href="mailto:info@digtra.net"
+                    href="mailto:info@yaqeen.tech"
                     className="focus-ring mt-1 block rounded font-semibold text-neutral-950 transition hover:text-neutral-600"
                   >
-                    info@digentra.net
+                    info@yaqeen.tech
                   </a>
                 </li>
                 <li>
                   <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">Location</span>
-                  <p className="mt-1 font-semibold text-neutral-950">Concord, CA</p>
+                  <p className="mt-1 font-semibold text-neutral-950">
+                    Clock Tower, Shahr e Naw, Kabul, Afghanistan
+                  </p>
                 </li>
                 <li>
                   <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">Phone</span>
                   <a
-                    href="tel:+19254485675"
+                    href="tel:+93730663819"
                     className="focus-ring mt-1 block rounded font-semibold text-neutral-950 transition hover:text-neutral-600"
                   >
-                    +1 (925) 448-5675
+                    0730 663 819
                   </a>
                 </li>
               </ul>

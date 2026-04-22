@@ -30,7 +30,7 @@ export function About() {
               <span className="accent-mark">driven by precision</span>
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-600">
-              Digentra is a technology company built on clear communication,
+              Yaqeen Techongly is a technology company built on clear communication,
               disciplined delivery, and long-term partnerships. We bridge strategy
               and execution so every engagement feels intentional.
             </p>

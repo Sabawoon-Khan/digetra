@@ -16,11 +16,11 @@ const display = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Digentra — Digital & IT Services",
+  title: "Yaqeen Techongly — Digital & IT Services",
   description:
     "Technology-focused digital and IT services: cloud, custom software, security, and managed support. Clear delivery, lasting partnerships.",
   openGraph: {
-    title: "Digentra — Digital & IT Services",
+    title: "Yaqeen Techongly — Digital & IT Services",
     description:
       "Dependable digital solutions — from cloud and infrastructure to custom software.",
   },

@@ -31,7 +31,7 @@ export function Hero() {
           </div>
 
           <p className="mb-5 inline-flex items-center rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-[0.625rem] font-semibold uppercase tracking-[0.2em] text-neutral-600 sm:text-[0.6875rem]">
-            Digentra
+            Yaqeen Techongly
           </p>
 
           <h1 className="font-display text-[1.85rem] font-bold leading-[1.12] tracking-[-0.035em] text-neutral-950 text-balance sm:text-4xl md:text-5xl lg:text-[3.25rem]">

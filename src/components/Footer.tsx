@@ -50,7 +50,7 @@ export function Footer() {
             href="/#top"
             className="focus-ring font-display text-lg font-bold tracking-tight text-white"
           >
-            Digentra
+            Yaqeen Techongly
           </Link>
 
           <nav
@@ -85,19 +85,21 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-neutral-800 pt-8 text-xs text-neutral-600 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6">
-          <p>© {year} Digentra · Concord, CA</p>
+          <p>
+            © {year} Yaqeen Techongly · Clock Tower, Shahr e Naw, Kabul, Afghanistan
+          </p>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
             <a
-              href="mailto:info@digtra.net"
+              href="mailto:info@yaqeen.tech"
               className="focus-ring w-fit text-neutral-500 transition hover:text-neutral-300"
             >
-              info@digtra.net
+              info@yaqeen.tech
             </a>
             <a
-              href="tel:+19254485675"
+              href="tel:+93730663819"
               className="focus-ring w-fit text-neutral-500 transition hover:text-neutral-300"
             >
-              +1 (925) 448-5675
+              0730 663 819
             </a>
           </div>
         </div>

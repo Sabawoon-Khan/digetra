@@ -5,11 +5,11 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "Training & Capacity Building — Digentra",
+  title: "Training & Capacity Building — Yaqeen Techongly",
   description:
     "Short-term tech and AI training built for job outcomes: sprints, interview prep, portfolio support, certifications like Salesforce, and career coaching.",
   openGraph: {
-    title: "Training & Capacity Building — Digentra",
+    title: "Training & Capacity Building — Yaqeen Techongly",
     description:
       "Hands-on programs for people who need momentum — AI fluency, interviews, portfolio, and certs.",
   },

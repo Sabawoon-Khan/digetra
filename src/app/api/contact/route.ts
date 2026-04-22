@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "info@digtra.net";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "info@yaqeen.tech";
 
 function isNonEmptyString(v: unknown, max: number): v is string {
   return typeof v === "string" && v.trim().length > 0 && v.length <= max;

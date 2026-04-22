@@ -149,7 +149,7 @@ export function Header() {
           href="/#top"
           className="focus-ring font-display text-2xl font-bold tracking-tight text-neutral-950 sm:text-[1.75rem]"
         >
-          Digentra
+          Yaqeen Techongly
         </Link>
 
         <nav

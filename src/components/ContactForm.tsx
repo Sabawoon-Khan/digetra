@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const INFO_EMAIL = "info@digtra.net";
+const INFO_EMAIL = "info@yaqeen.tech";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");

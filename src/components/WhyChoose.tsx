@@ -55,7 +55,7 @@ export function WhyChoose() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">
-              Why Digentra
+              Why Yaqeen Techongly
             </p>
             <h2
               id="why-heading"
