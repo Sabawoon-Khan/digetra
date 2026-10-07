@@ -15,21 +15,22 @@ function StoryCopy() {
   return (
     <div className="flex flex-col items-center gap-5 lg:items-start lg:gap-7">
       <div>
-        <p className="text-sm font-medium tracking-tight text-[var(--brand-muted)]">Yaqeen AI OS</p>
+        <p className="text-sm font-medium tracking-tight text-[var(--brand-muted)]">Digentra</p>
         <h2
           id="product-heading"
           className="mt-2 font-display text-[clamp(1.85rem,3.4vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-[var(--brand-ink)] text-balance"
         >
-          Scale your team&apos;s capacity with the AI that does more for{" "}
-          <span className="text-[var(--brand-muted)]">every ministry.</span>
+          Scale your team&apos;s capacity with software that does more for{" "}
+          <span className="text-[var(--brand-muted)]">every team.</span>
         </h2>
       </div>
       <p className="max-w-md text-base leading-relaxed text-[var(--brand-muted)] text-balance sm:text-[1.0625rem]">
-        One shared workspace for officers and agents—triage tenders, screen vendors,
-        and keep every award decision clear and auditable.
+        We design and ship AI systems, custom platforms, and enablement
+        programs — so your people spend less time fighting tools and more time
+        on work that matters.
       </p>
       <Link
-        href="/government"
+        href="/ai"
         className="focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand-primary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--brand-primary-hover)]"
       >
         Learn more
@@ -49,14 +50,14 @@ function StoryCopy() {
 
 function StoryImage() {
   return (
-    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-[0_28px_70px_-32px_rgba(26,31,28,0.4)]">
+    <div className="product-story-art relative aspect-[4/5] w-full" aria-hidden>
+      <div className="product-story-art-aura" />
       <Image
-        src="/images/product-story-gov.jpg"
-        alt="Government procurement workspace with Yaqeen AI OS"
+        src="/images/product-story-capacity.png"
+        alt=""
         fill
-        className="object-cover"
-        sizes="(max-width: 1024px) 90vw, 480px"
-        priority={false}
+        className="product-story-art-img object-contain object-right-bottom"
+        sizes="(max-width: 1024px) 90vw, 520px"
       />
     </div>
   );
@@ -172,7 +173,7 @@ export function ProductStory() {
               style={{ transform: `translate3d(${(1 - line2) * 150}%, 0, 0)` }}
             >
               <span className="inline-block rounded-sm bg-[#dbc7dc] px-2 sm:px-3">
-                gov procurement
+                AI software
               </span>
             </p>
             <p

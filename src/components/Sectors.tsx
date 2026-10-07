@@ -5,24 +5,41 @@ import { Reveal } from "./Reveal";
 
 const useCases = [
   {
-    title: "Government contracts",
-    text: "See why ministries trust Yaqeen for tender-ready systems, secure platforms, and audit-ready delivery.",
+    title: "Government procurement",
+    text: "Digentra AI OS for US agencies — triage solicitations, screen vendors, and keep awards auditable.",
     href: "/government",
-    image: "/images/usecase-gov.png",
+    image: "/images/usecase-gov-reference.png",
+    artClass: "h-[60%] w-full",
   },
   {
-    title: "Enterprise systems",
-    text: "Swift, streamlined, and scalable. Internal tools and cloud platforms that fuel operational growth.",
+    title: "Enterprise buyers",
+    text: "Extend the same procurement workspace to enterprise sourcing teams that need speed and control.",
     href: "/services",
-    image: "/images/usecase-enterprise.png",
+    image: "/images/usecase-enterprise-reference.png",
+    artClass: "h-[64%] w-[62%]",
   },
   {
-    title: "Capacity building",
-    text: "Crystal-clear training paths and lasting skills — everything teams need to adopt AI with confidence.",
+    title: "Customer marketing",
+    text: "Enablement and marketing programs that help teams adopt Digentra and reach the buyers who need it.",
     href: "/capacity-building",
-    image: "/images/usecase-capacity.png",
+    image: "/images/usecase-capacity-reference.png",
+    artClass: "h-[65%] w-[76%]",
   },
 ];
+
+function ArrowIcon() {
+  return (
+    <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path
+        d="M3 8h10M9 4l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function Sectors() {
   return (
@@ -50,10 +67,9 @@ export function Sectors() {
         ))}
       </svg>
 
-      {/* Full-bleed like hero — edge-to-edge cards */}
       <div className="relative z-[1] w-full px-3 sm:px-4 lg:px-5">
         <Reveal>
-          <div className="mx-auto flex max-w-[1600px] flex-col items-start gap-8 px-2 pb-[48px] sm:gap-10 sm:pb-[60px] lg:flex-row lg:items-end lg:justify-between">
+          <div className="mx-auto max-w-[1600px] px-2 pb-[48px] sm:pb-[60px]">
             <h2
               id="use-cases-heading"
               className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-[var(--brand-ink)]"
@@ -63,21 +79,6 @@ export function Sectors() {
               </span>
               Where we make an impact
             </h2>
-            <Link
-              href="/work"
-              className="focus-ring inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--brand-border-strong)] bg-white px-5 py-3 text-sm font-semibold text-[var(--brand-ink)] transition hover:border-[var(--brand-primary)]/25"
-            >
-              View all work
-              <svg className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" aria-hidden>
-                <path
-                  d="M3 8h10M9 4l4 4-4 4"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
           </div>
         </Reveal>
 
@@ -88,48 +89,33 @@ export function Sectors() {
                 href={item.href}
                 className="group relative block text-[var(--brand-ink)] no-underline"
               >
-                <div className="relative flex h-full min-h-[30rem] flex-col overflow-hidden rounded-[25px] bg-[#cae3da] transition-all duration-300 sm:min-h-[34rem] lg:min-h-[38rem]">
-                  <div
-                    className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[65%] opacity-50 mix-blend-color-burn"
-                    style={{
-                      background: "linear-gradient(180deg, rgba(57,133,190,0), #3985be)",
-                    }}
-                    aria-hidden
-                  />
-
-                  <div className="relative z-[2] flex gap-3 p-7 pb-4 sm:p-9 sm:pb-6 lg:justify-between">
-                    <div className="min-w-0 flex-1 lg:max-w-[82%]">
-                      <h3 className="mb-5 font-display text-[clamp(1.65rem,2.4vw,2.75rem)] font-semibold leading-[1.08] tracking-[-0.03em]">
-                        {item.title}
-                      </h3>
-                      <p className="text-[clamp(1rem,1.15vw,1.25rem)] leading-[1.25] text-[var(--brand-ink)]/90 lg:w-[90%]">
-                        {item.text}
-                      </p>
-                    </div>
-                    <span className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--brand-primary)] text-white opacity-100 transition-all duration-300 lg:translate-x-[-10px] lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-100">
-                      <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden>
-                        <path
-                          d="M3 8h10M9 4l4 4-4 4"
-                          stroke="currentColor"
-                          strokeWidth="1.75"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
+                <article className="usecase-card relative flex w-full min-h-[30rem] flex-col overflow-hidden rounded-[22px] sm:min-h-[32rem] lg:min-h-0">
+                  <div className="relative z-[2] px-7 pb-7 pt-9 sm:px-8 sm:pb-8 sm:pt-10">
+                    <h3 className="mb-5 max-w-[13ch] font-display text-[clamp(1.65rem,2.25vw,2.3rem)] font-semibold leading-[1.04] tracking-[-0.035em]">
+                      {item.title}
+                    </h3>
+                    <p className="max-w-[20rem] text-[clamp(1rem,1.1vw,1.125rem)] leading-[1.35] tracking-[-0.01em] text-[var(--brand-ink)]/80 lg:max-w-[21ch]">
+                      {item.text}
+                    </p>
                   </div>
+                  <span className="usecase-card-arrow absolute right-7 top-9 z-[3] flex h-8 w-8 items-center justify-center rounded-full text-[var(--brand-ink)] opacity-0 sm:right-8 sm:top-10">
+                    <ArrowIcon />
+                  </span>
 
-                  <div className="relative z-[1] mt-auto flex min-h-[16rem] flex-1 items-end justify-end px-2 pb-0 sm:min-h-[18rem] lg:min-h-[20rem]">
+                  {/* Exact reference-style engraving, anchored to the bottom-right */}
+                  <div
+                    className={`usecase-card-media pointer-events-none absolute bottom-0 right-0 z-[1] ${item.artClass}`}
+                    aria-hidden
+                  >
                     <Image
                       src={item.image}
                       alt=""
-                      width={750}
-                      height={650}
-                      className="h-auto max-h-[22rem] w-full object-contain object-bottom transition-transform duration-300 group-hover:scale-[1.02] sm:max-h-[26rem]"
-                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      fill
+                      className="object-contain object-right-bottom"
+                      sizes="(max-width: 1024px) 80vw, 28vw"
                     />
                   </div>
-                </div>
+                </article>
               </Link>
             </Reveal>
           ))}

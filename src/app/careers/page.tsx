@@ -6,8 +6,9 @@ import { Reveal } from "@/components/Reveal";
 import { SolutionPageHero } from "@/components/SolutionPage";
 
 export const metadata: Metadata = {
-  title: "Careers — Yaqeen Techongly",
-  description: "Join Yaqeen Techongly — build AI-powered software and systems with lasting impact.",
+  title: "Careers — Digentra",
+  description:
+    "Join Digentra in Concord, CA — build AI systems and software products for enterprise and public-sector teams.",
 };
 
 export default function CareersPage() {
@@ -17,12 +18,14 @@ export default function CareersPage() {
         eyebrow="Company · Careers"
         title={
           <>
-            Build with Yaqeen
+            Build with Digentra
           </>
         }
-        intro="We’re interested in engineers, designers, and delivery leads who care about clarity, craft, and lasting systems."
-        ctaHref="mailto:info@yaqeen.tech?subject=Careers%20at%20Yaqeen"
+        intro="We’re interested in engineers, designers, and product thinkers who care about clarity, craft, and lasting software."
+        ctaHref="mailto:info@digentra.net?subject=Careers%20at%20Digentra"
         ctaLabel="Email careers"
+        visual="/images/hero-careers-engraved.png"
+        visualAlt="Engraved figures designing a geometric model together"
       />
       <section className="mx-auto max-w-3xl px-5 pb-16 sm:px-6 lg:px-8">
         <Reveal>
@@ -35,7 +38,7 @@ export default function CareersPage() {
               href="/about"
               className="focus-ring mt-6 inline-flex text-sm font-semibold text-[var(--brand-primary)]"
             >
-              Learn about Yaqeen →
+              Learn about Digentra →
             </Link>
           </div>
         </Reveal>

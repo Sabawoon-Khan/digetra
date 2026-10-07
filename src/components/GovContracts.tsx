@@ -2,28 +2,28 @@ import { Reveal } from "./Reveal";
 
 const capabilities = [
   {
-    title: "Public-sector systems",
-    text: "MIS platforms, citizen services, registries, and operational tools designed for institutional scale.",
+    title: "Secure platforms",
+    text: "Systems built for agency risk — access control, hardening, and audit trails from day one.",
   },
   {
-    title: "Tender-ready delivery",
-    text: "Scoped work packages, milestones, and documentation that stand up to procurement and audit review.",
+    title: "AI that helps operators",
+    text: "Grounded copilots and automation with review gates — so humans focus on judgment, not busywork.",
   },
   {
     title: "Security & compliance",
-    text: "Access control, hardening, and policies aligned with government risk expectations.",
+    text: "Documentation and posture aligned with public-sector expectations — not bolted on before launch.",
   },
   {
-    title: "Capacity & handover",
+    title: "Rollout & enablement",
     text: "Training, runbooks, and knowledge transfer so agencies stay in control after go-live.",
   },
 ];
 
 const engagement = [
   "Discovery",
-  "Architecture",
-  "Build & integrate",
-  "UAT & training",
+  "Design & build",
+  "Integrate",
+  "Pilot & train",
   "Support",
 ];
 
@@ -39,18 +39,20 @@ export function GovContracts() {
           <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
               <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-cyan-300/85">
-                Government contracts
+                Public sector
               </p>
               <h2
                 id="contracts-heading"
                 className="font-display mt-4 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-[-0.035em] text-white"
               >
-                Built for public-sector delivery
+                Built for government delivery
               </h2>
             </div>
             <div className="flex flex-col justify-end lg:col-span-7">
               <p className="text-lg leading-relaxed text-white/55 sm:text-xl">
-                Reliable software and infrastructure for ministries, agencies, and funded programs — with the documentation, security posture, and follow-through procurement teams expect.
+                Digentra partners with US agencies on secure platforms and AI
+                systems — with the documentation and follow-through public
+                programs expect.
               </p>
             </div>
           </div>
@@ -76,17 +78,17 @@ export function GovContracts() {
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <h3 className="font-display text-xl font-semibold tracking-tight text-white">
-                  Engagement path
+                  How we deliver
                 </h3>
                 <p className="mt-2 max-w-md text-sm text-white/50">
-                  From RFP response through go-live — one accountable partner.
+                  From discovery through go-live — one accountable delivery team.
                 </p>
               </div>
               <a
-                href="#contact"
+                href="/contact"
                 className="focus-ring inline-flex shrink-0 items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[var(--brand-ink)] transition hover:bg-white/90"
               >
-                Discuss a contract
+                Talk to us
               </a>
             </div>
             <ol className="mt-8 flex flex-wrap gap-2 sm:gap-3">

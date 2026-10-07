@@ -134,9 +134,9 @@ const megaMenus: MegaMenu[] = [
         title: "Products",
         items: [
           { href: "/ai", label: "AI Systems", desc: "Copilots, agents, and grounded models.", icon: icons.ai },
-          { href: "/services", label: "Custom Software", desc: "Web apps and tools built to last.", icon: icons.software },
-          { href: "/services#cloud", label: "Cloud & Infrastructure", desc: "Secure architecture and ops.", icon: icons.cloud },
-          { href: "/services#data", label: "Data & Analytics", desc: "Pipelines and decision surfaces.", icon: icons.data },
+          { href: "/services", label: "Custom Software", desc: "Apps and platforms built to last.", icon: icons.software },
+          { href: "/government", label: "Public Sector", desc: "Secure systems for agencies.", icon: icons.gov },
+          { href: "/capacity-building", label: "Customer Marketing", desc: "Enablement and growth programs.", icon: icons.train },
         ],
       },
       {
@@ -150,11 +150,11 @@ const megaMenus: MegaMenu[] = [
       },
     ],
     whatsNew: {
-      title: "Introducing Yaqeen AI orchestration",
-      body: "Get agents and analysts working together in a shared workspace built for real delivery.",
+      title: "AI that ships in production",
+      body: "Grounded copilots and agents with evaluation and review gates — built for teams that need trust, not demos.",
       href: "/ai",
-      cta: "See what's new",
-      image: "/images/mega-card-ai.jpg",
+      cta: "Explore AI Systems",
+      image: "/images/hero-ai-engraved.png",
     },
   },
   {
@@ -164,10 +164,10 @@ const megaMenus: MegaMenu[] = [
       {
         title: "Use cases",
         items: [
-          { href: "/government", label: "Government Contracts", desc: "Tender-ready public-sector delivery.", icon: icons.gov },
-          { href: "/services", label: "Enterprise Systems", desc: "Internal tools and platforms that scale.", icon: icons.building },
-          { href: "/ai", label: "AI Transformation", desc: "From pilot to production with control.", icon: icons.ai },
-          { href: "/capacity-building", label: "Capacity Building", desc: "Skills programs that land outcomes.", icon: icons.train },
+          { href: "/ai", label: "AI Systems", desc: "Intelligence your operators can trust.", icon: icons.ai },
+          { href: "/services", label: "Enterprise Systems", desc: "Software that scales with you.", icon: icons.building },
+          { href: "/government", label: "Public Sector", desc: "Tender-ready, audit-aware delivery.", icon: icons.gov },
+          { href: "/capacity-building", label: "Customer Marketing", desc: "Enablement and growth for Digentra.", icon: icons.train },
         ],
       },
       {
@@ -201,11 +201,11 @@ const megaMenus: MegaMenu[] = [
       },
     ],
     whatsNew: {
-      title: "Government-ready delivery playbook",
-      body: "How we scope, secure, and hand over systems ministries and agencies can own.",
+      title: "Built for public programs",
+      body: "How Digentra helps agencies ship secure platforms with documentation teams can own after go-live.",
       href: "/government",
-      cta: "Explore government",
-      image: "/images/mega-card-gov.jpg",
+      cta: "Explore public sector",
+      image: "/images/hero-government-engraved.png",
     },
   },
   {
@@ -217,7 +217,7 @@ const megaMenus: MegaMenu[] = [
         items: [
           { href: "/work", label: "Selected Work", desc: "Outcomes across industries.", icon: icons.work },
           { href: "/ai", label: "AI Guides", desc: "How we ship production AI.", icon: icons.guide },
-          { href: "/capacity-building", label: "Training Programs", desc: "AI, career, and certification paths.", icon: icons.train },
+          { href: "/capacity-building", label: "Customer Marketing", desc: "Enablement and outreach for Digentra.", icon: icons.train },
           { href: "/about", label: "Our Approach", desc: "How engagements typically run.", icon: icons.profile },
         ],
       },
@@ -233,13 +233,13 @@ const megaMenus: MegaMenu[] = [
           {
             href: "/government",
             label: "Public-sector delivery",
-            desc: "Procurement-ready documentation.",
+            desc: "Documentation agencies can own.",
             icon: icons.gov,
           },
           {
             href: "/capacity-building",
-            label: "Skills & training",
-            desc: "Programs teams can apply immediately.",
+            label: "Customer marketing",
+            desc: "Enablement and outreach for Digentra.",
             icon: icons.train,
           },
           {
@@ -253,10 +253,10 @@ const megaMenus: MegaMenu[] = [
     ],
     whatsNew: {
       title: "Bring AI into your program",
-      body: "A practical blueprint for impact, roadblocks, and implementation with Yaqeen.",
+      body: "A practical blueprint for shipping grounded AI with evaluation, review gates, and lasting ownership.",
       href: "/ai",
       cta: "Check it out",
-      image: "/images/mega-card-bust.jpg",
+      image: "/images/engrave-enterprise.png",
     },
   },
   {
@@ -266,9 +266,9 @@ const megaMenus: MegaMenu[] = [
       {
         title: "About us",
         items: [
-          { href: "/about", label: "About Yaqeen", desc: "Trust, precision, lasting partners.", icon: icons.people },
+          { href: "/about", label: "About Digentra", desc: "Trust, precision, lasting partners.", icon: icons.people },
           { href: "/work", label: "Our work", desc: "Selected projects and outcomes.", icon: icons.work },
-          { href: "/careers", label: "Careers", desc: "Build with Yaqeen.", icon: icons.train },
+          { href: "/careers", label: "Careers", desc: "Build with Digentra.", icon: icons.train },
           { href: "/about", label: "Mission & vision", desc: "Why we build reliable systems.", icon: icons.guide },
         ],
       },
@@ -304,15 +304,15 @@ const megaMenus: MegaMenu[] = [
     ],
     whatsNew: {
       title: "We're hiring builders",
-      body: "Join a team shipping AI, software, and government-ready systems from Kabul outward.",
+      body: "Join a Concord, CA team building AI systems and software products for enterprise and public-sector teams.",
       href: "/careers",
       cta: "View careers",
-      image: "/images/mega-card-report.jpg",
+      image: "/images/hero-enablement-engraved.png",
     },
   },
 ];
 
-function YaqeenMark({ className = "h-7 w-7" }: { className?: string }) {
+function DigentraMark({ className = "h-7 w-7" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 32 32" fill="none" aria-hidden>
       <circle cx="16" cy="16" r="15" stroke="currentColor" strokeWidth="1.5" opacity="0.25" />
@@ -384,16 +384,17 @@ function MegaPanel({
           <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[var(--brand-muted)]">
             What&apos;s new
           </p>
-          <div className="mt-4 overflow-hidden rounded-2xl border border-white/60 bg-white shadow-sm">
-            <div className="relative aspect-[16/10]">
-              <Image
-                src={menu.whatsNew.image}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="320px"
-              />
-            </div>
+          <div
+            className="product-story-art relative mt-4 aspect-square overflow-visible"
+          >
+            <div className="product-story-art-aura" aria-hidden />
+            <Image
+              src={menu.whatsNew.image}
+              alt=""
+              fill
+              className="product-story-art-img object-contain object-center"
+              sizes="320px"
+            />
           </div>
           <h3 className="mt-4 text-base font-semibold leading-snug tracking-tight text-[var(--brand-ink)]">
             {menu.whatsNew.title}
@@ -484,9 +485,9 @@ export function Header() {
                 setActiveMenu(null);
               }}
             >
-              <YaqeenMark />
+              <DigentraMark />
               <span className="font-display text-[0.95rem] font-semibold tracking-tight sm:text-base">
-                Yaqeen Techongly
+                Digentra
               </span>
             </Link>
 

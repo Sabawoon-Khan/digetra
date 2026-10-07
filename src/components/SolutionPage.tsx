@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Hero } from "@/components/Hero";
 import { Reveal } from "@/components/Reveal";
 import { TrustStrip } from "@/components/TrustStrip";
 
@@ -55,14 +56,36 @@ function MazeCorner({ side }: { side: "left" | "right" }) {
         width={200}
         height={280}
         className="h-auto w-full object-contain object-left-top"
-        priority={false}
+      />
+    </div>
+  );
+}
+
+function HeroCutout({
+  src,
+  alt = "",
+  sizes,
+}: {
+  src: string;
+  alt?: string;
+  sizes: string;
+}) {
+  return (
+    <div className="product-story-art relative h-full w-full" aria-hidden={!alt}>
+      <div className="product-story-art-aura" aria-hidden />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="product-story-art-img object-contain object-center"
+        sizes={sizes}
       />
     </div>
   );
 }
 
 export function SolutionPageHero({
-  brand = "Yaqeen",
+  brand = "Digentra",
   eyebrow,
   title,
   intro,
@@ -74,88 +97,18 @@ export function SolutionPageHero({
   visualAlt = "",
 }: SolutionPageHeroProps) {
   return (
-    <section className="solution-hero relative overflow-hidden pb-12 pt-8 sm:pb-16 sm:pt-12">
-      <MazeCorner side="left" />
-      <MazeCorner side="right" />
-      <div
-        className="pointer-events-none absolute -right-16 top-10 h-72 w-72 opacity-50"
-        aria-hidden
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(120,200,175,0.35), transparent 68%)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute -left-24 bottom-8 h-64 w-64 opacity-45"
-        aria-hidden
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(212,196,140,0.32), transparent 70%)",
-        }}
-      />
-
-      <div className="relative z-[1] mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
-        <Reveal>
-          <p className="font-display text-[clamp(1.75rem,3.5vw,2.35rem)] font-semibold tracking-[-0.04em] text-[var(--brand-primary)]">
-            {brand}
-          </p>
-          <p className="section-label mt-5">{eyebrow}</p>
-          <h1 className="section-title mt-4 max-w-4xl text-[clamp(2.5rem,5.5vw,4.25rem)] text-balance">
-            {title}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--brand-muted)] sm:text-[1.2rem]">
-            {intro}
-          </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link href={ctaHref} className="focus-ring btn-solid inline-flex gap-2 px-7 py-3.5 text-sm">
-              {ctaLabel}
-              <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden>
-                <path
-                  d="M3 8h10M9 4l4 4-4 4"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
-            {secondaryHref && secondaryLabel ? (
-              <Link
-                href={secondaryHref}
-                className="focus-ring btn-ghost inline-flex gap-2 bg-white/55 px-7 py-3.5 text-sm backdrop-blur"
-              >
-                {secondaryLabel}
-              </Link>
-            ) : null}
-          </div>
-        </Reveal>
-
-        {visual ? (
-          <Reveal>
-            <div className="solution-hero-visual relative mx-auto mt-14 max-w-5xl">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] border border-[var(--brand-border)] bg-white shadow-[var(--brand-shadow)]">
-                <Image
-                  src={visual}
-                  alt={visualAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 960px"
-                  priority
-                />
-              </div>
-              <div
-                className="pointer-events-none absolute -left-6 -top-6 h-16 w-16 rounded-full border-[3px] border-[var(--brand-accent-soft)]/50 sm:-left-8 sm:-top-8"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute -bottom-5 -right-4 h-20 w-20 rotate-12 rounded-2xl bg-[var(--brand-mint)]/55 sm:-bottom-7 sm:-right-6"
-                aria-hidden
-              />
-            </div>
-          </Reveal>
-        ) : null}
-      </div>
-    </section>
+    <Hero
+      brand={brand}
+      eyebrow={eyebrow}
+      title={title}
+      intro={intro}
+      primaryHref={ctaHref}
+      primaryLabel={ctaLabel}
+      secondaryHref={secondaryHref ?? ""}
+      secondaryLabel={secondaryLabel ?? ""}
+      image={visual}
+      imageAlt={visualAlt}
+    />
   );
 }
 
@@ -198,12 +151,9 @@ export function SolutionPillars({
                 style={{ transitionDelay: `${index * 60}ms` }}
               >
                 {pillar.image ? (
-                  <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-[var(--brand-border)] bg-white">
-                    <Image
+                  <div className="solution-pillar-art mb-6">
+                    <HeroCutout
                       src={pillar.image}
-                      alt=""
-                      fill
-                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
@@ -251,27 +201,13 @@ export function SolutionFeatures({
                 }`}
               >
                 <div className="relative lg:col-span-6">
-                  <div className="relative aspect-[5/4] overflow-hidden rounded-[1.75rem] border border-[var(--brand-border)] bg-white shadow-[var(--brand-shadow)]">
-                    <Image
+                  <div className="solution-feature-art">
+                    <HeroCutout
                       src={feature.image}
                       alt={feature.imageAlt ?? ""}
-                      fill
-                      className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 540px"
                     />
                   </div>
-                  <div
-                    className={`pointer-events-none absolute h-14 w-14 rounded-full border-[3px] border-[var(--brand-accent-soft)]/45 ${
-                      reverse ? "-right-3 -top-4" : "-left-3 -top-4"
-                    }`}
-                    aria-hidden
-                  />
-                  <div
-                    className={`pointer-events-none absolute h-16 w-16 rotate-6 rounded-2xl bg-[var(--brand-amber-wash)] ${
-                      reverse ? "-bottom-4 -left-3" : "-bottom-4 -right-3"
-                    }`}
-                    aria-hidden
-                  />
                 </div>
                 <div className="lg:col-span-6">
                   <h2 className="section-title text-[clamp(1.75rem,3.2vw,2.5rem)] text-balance">

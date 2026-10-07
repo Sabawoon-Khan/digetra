@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
-const INFO_EMAIL = "info@yaqeen.tech";
+const INFO_EMAIL = "info@digentra.net";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -13,12 +14,16 @@ export function ContactForm() {
     setErrorMessage(null);
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const name = String(fd.get("name") ?? "").trim();
+    const firstName = String(fd.get("firstName") ?? "").trim();
+    const lastName = String(fd.get("lastName") ?? "").trim();
     const email = String(fd.get("email") ?? "").trim();
+    const company = String(fd.get("company") ?? "").trim();
+    const jobTitle = String(fd.get("jobTitle") ?? "").trim();
     const message = String(fd.get("message") ?? "").trim();
+    const name = [firstName, lastName].filter(Boolean).join(" ");
 
-    if (!name || !email || !message) {
-      setErrorMessage("Please fill in all fields.");
+    if (!firstName || !lastName || !email || !message) {
+      setErrorMessage("Please fill in all required fields.");
       return;
     }
 
@@ -27,7 +32,7 @@ export function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, company, jobTitle, message }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };
 
@@ -48,7 +53,7 @@ export function ContactForm() {
   if (status === "sent") {
     return (
       <div
-        className="flex flex-col items-center rounded-[1.5rem] border border-[var(--brand-border)] bg-white p-10 text-center shadow-[var(--brand-shadow)]"
+        className="flex flex-col items-center rounded-[1.35rem] border border-[var(--brand-border)] bg-white/95 p-10 text-center shadow-[0_24px_60px_-28px_rgba(26,31,28,0.28)] backdrop-blur-sm"
         role="status"
         aria-live="polite"
       >
@@ -72,70 +77,159 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "focus-ring mt-1.5 w-full rounded-full border border-[var(--brand-border)] bg-[var(--brand-bg)] px-5 py-3.5 text-[var(--brand-ink)] outline-none transition placeholder:text-neutral-400 focus:border-[var(--brand-primary)] focus:bg-white focus:ring-2 focus:ring-[var(--brand-primary)]/15";
+    "focus-ring mt-1.5 w-full rounded-xl border border-[var(--brand-border)] bg-white px-4 py-3 text-[0.9375rem] text-[var(--brand-ink)] outline-none transition placeholder:text-neutral-400 focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/12 disabled:opacity-60";
 
   return (
     <form
+      id="contact-form"
       onSubmit={handleSubmit}
-      className="space-y-5 rounded-[1.5rem] border border-[var(--brand-border)] bg-white p-6 shadow-[var(--brand-shadow)] sm:p-8"
+      className="rounded-[1.35rem] border border-[var(--brand-border)] bg-white/95 p-6 shadow-[0_24px_60px_-28px_rgba(26,31,28,0.28)] backdrop-blur-sm sm:p-8"
       noValidate
     >
+      <h2 className="text-xl font-semibold tracking-tight text-[var(--brand-ink)] sm:text-[1.35rem]">
+        Book your conversation
+      </h2>
+      <p className="mt-1.5 text-sm text-[var(--brand-muted)]">
+        Tell us a little about your team — we&apos;ll follow up within one business day.
+      </p>
+
       {errorMessage ? (
-        <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900" role="alert">
+        <p className="mt-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900" role="alert">
           {errorMessage}
         </p>
       ) : null}
-      <div>
-        <label htmlFor="contact-name" className="block text-sm font-semibold text-[var(--brand-ink)]">
-          Name
-        </label>
-        <input
-          id="contact-name"
-          name="name"
-          type="text"
-          autoComplete="name"
-          required
-          disabled={status === "sending"}
-          className={inputClass}
-          placeholder="Your name"
-        />
+
+      <div className="mt-6 space-y-4">
+        <div>
+          <label htmlFor="contact-email" className="block text-sm font-medium text-[var(--brand-ink)]">
+            Business email
+          </label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            disabled={status === "sending"}
+            className={inputClass}
+            placeholder="you@company.com"
+          />
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="contact-first-name" className="block text-sm font-medium text-[var(--brand-ink)]">
+              First name
+            </label>
+            <input
+              id="contact-first-name"
+              name="firstName"
+              type="text"
+              autoComplete="given-name"
+              required
+              disabled={status === "sending"}
+              className={inputClass}
+              placeholder="Jordan"
+            />
+          </div>
+          <div>
+            <label htmlFor="contact-last-name" className="block text-sm font-medium text-[var(--brand-ink)]">
+              Last name
+            </label>
+            <input
+              id="contact-last-name"
+              name="lastName"
+              type="text"
+              autoComplete="family-name"
+              required
+              disabled={status === "sending"}
+              className={inputClass}
+              placeholder="Lee"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="contact-company" className="block text-sm font-medium text-[var(--brand-ink)]">
+            Company name
+          </label>
+          <input
+            id="contact-company"
+            name="company"
+            type="text"
+            autoComplete="organization"
+            disabled={status === "sending"}
+            className={inputClass}
+            placeholder="Acme Corp"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="contact-job-title" className="block text-sm font-medium text-[var(--brand-ink)]">
+            Job title
+          </label>
+          <input
+            id="contact-job-title"
+            name="jobTitle"
+            type="text"
+            autoComplete="organization-title"
+            disabled={status === "sending"}
+            className={inputClass}
+            placeholder="Head of Product"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="contact-message" className="block text-sm font-medium text-[var(--brand-ink)]">
+            How can we help?
+          </label>
+          <textarea
+            id="contact-message"
+            name="message"
+            required
+            rows={4}
+            disabled={status === "sending"}
+            className={`${inputClass} resize-y`}
+            placeholder="Tell us about your project, RFP, or question…"
+          />
+        </div>
       </div>
-      <div>
-        <label htmlFor="contact-email" className="block text-sm font-semibold text-[var(--brand-ink)]">
-          Email
-        </label>
-        <input
-          id="contact-email"
-          name="email"
-          type="email"
-          autoComplete="email"
-          required
-          disabled={status === "sending"}
-          className={inputClass}
-          placeholder="you@company.com"
-        />
-      </div>
-      <div>
-        <label htmlFor="contact-message" className="block text-sm font-semibold text-[var(--brand-ink)]">
-          Message
-        </label>
-        <textarea
-          id="contact-message"
-          name="message"
-          required
-          rows={5}
-          disabled={status === "sending"}
-          className={`${inputClass} resize-y rounded-3xl`}
-          placeholder="Tell us about your project, RFP, or question…"
-        />
-      </div>
+
       <button
         type="submit"
         disabled={status === "sending"}
-        className="focus-ring btn-solid w-full py-3.5 text-[0.9375rem] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-10"
+        className="focus-ring btn-solid group mt-6 inline-flex w-full items-center justify-center gap-2 py-3.5 text-[0.9375rem] disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {status === "sending" ? "Sending…" : "Send message"}
+        {status === "sending" ? "Sending…" : "Schedule now"}
+        {status !== "sending" ? (
+          <svg
+            className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden
+          >
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        ) : null}
       </button>
+
+      <p className="mt-4 text-center text-xs leading-relaxed text-[var(--brand-muted)]">
+        By submitting, you agree to our{" "}
+        <Link href="/privacy" className="underline underline-offset-2 hover:text-[var(--brand-ink)]">
+          Privacy Policy
+        </Link>
+        . Or email{" "}
+        <a href={`mailto:${INFO_EMAIL}`} className="underline underline-offset-2 hover:text-[var(--brand-ink)]">
+          {INFO_EMAIL}
+        </a>
+        .
+      </p>
     </form>
   );
 }

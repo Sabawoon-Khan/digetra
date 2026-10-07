@@ -1,12 +1,11 @@
-import Image from "next/image";
-
+import { HeroArt } from "./HeroArt";
 import { Reveal } from "./Reveal";
 
 const stats = [
-  { value: "50+", label: "Projects delivered" },
-  { value: "99.9%", label: "Uptime focus" },
-  { value: "Gov + enterprise", label: "Client mix" },
-  { value: "End-to-end", label: "Delivery model" },
+  { value: "AI + software", label: "What we build" },
+  { value: "US-based", label: "Concord, CA" },
+  { value: "Gov + enterprise", label: "Who we serve" },
+  { value: "End-to-end", label: "Build & enable" },
 ];
 
 export function About() {
@@ -33,7 +32,7 @@ export function About() {
             </div>
             <div className="flex flex-col justify-end lg:col-span-7">
               <p className="text-lg leading-relaxed text-[var(--brand-muted)] sm:text-xl sm:leading-relaxed">
-                Yaqeen Techongly bridges strategy and execution for enterprise teams and public-sector programs — with clear communication, disciplined delivery, and partnerships built to last.
+                Digentra is a US software company. We build AI systems, custom platforms, and customer marketing programs — with clear communication, disciplined delivery, and partnerships built to last.
               </p>
             </div>
           </div>
@@ -41,15 +40,13 @@ export function About() {
 
         <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-7">
-            <div className="relative h-full min-h-[260px] overflow-hidden rounded-2xl border border-[var(--brand-border)]">
-              <Image
-                src="/images/digentra-about-precision.png"
-                alt="Abstract composition suggesting precision and trusted partnerships"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 640px"
-              />
-            </div>
+            <HeroArt
+              src="/images/hero-about-engraved.png"
+              alt="Engraved classical figure with precision drafting lines"
+              className="h-full"
+              stageClassName="min-h-[280px] sm:min-h-[320px] h-full"
+              sizes="(max-width: 1024px) 100vw, 640px"
+            />
           </Reveal>
 
           <Reveal className="lg:col-span-5">

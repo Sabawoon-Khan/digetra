@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "info@yaqeen.tech";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "info@digentra.net";
 
 function isNonEmptyString(v: unknown, max: number): v is string {
   return typeof v === "string" && v.trim().length > 0 && v.length <= max;
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { name, email, message } = body as Record<string, unknown>;
+  const { name, email, message, company, jobTitle } = body as Record<string, unknown>;
 
   if (!isNonEmptyString(name, 200)) {
     return NextResponse.json({ error: "Please enter a valid name." }, { status: 400 });
@@ -44,18 +44,34 @@ export async function POST(request: Request) {
   const safeName = name.trim();
   const safeEmail = email.trim();
   const safeMessage = message.trim();
+  const safeCompany =
+    typeof company === "string" && company.trim().length > 0 && company.length <= 200
+      ? company.trim()
+      : null;
+  const safeJobTitle =
+    typeof jobTitle === "string" && jobTitle.trim().length > 0 && jobTitle.length <= 200
+      ? jobTitle.trim()
+      : null;
 
   const resend = new Resend(apiKey);
+
+  const metaLines = [
+    `From: ${safeName} <${safeEmail}>`,
+    safeCompany ? `Company: ${safeCompany}` : null,
+    safeJobTitle ? `Title: ${safeJobTitle}` : null,
+  ].filter(Boolean) as string[];
 
   const { error } = await resend.emails.send({
     from,
     to: TO_EMAIL,
     replyTo: safeEmail,
     subject: `Website contact: ${safeName}`,
-    text: [`From: ${safeName} <${safeEmail}>`, "", safeMessage].join("\n"),
+    text: [...metaLines, "", safeMessage].join("\n"),
     html: [
       `<p><strong>Name:</strong> ${escapeHtml(safeName)}</p>`,
       `<p><strong>Email:</strong> <a href="mailto:${escapeAttr(safeEmail)}">${escapeHtml(safeEmail)}</a></p>`,
+      safeCompany ? `<p><strong>Company:</strong> ${escapeHtml(safeCompany)}</p>` : "",
+      safeJobTitle ? `<p><strong>Title:</strong> ${escapeHtml(safeJobTitle)}</p>` : "",
       `<p><strong>Message:</strong></p>`,
       `<p>${escapeHtml(safeMessage).replace(/\n/g, "<br />")}</p>`,
     ].join(""),

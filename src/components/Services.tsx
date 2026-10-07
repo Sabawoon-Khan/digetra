@@ -5,41 +5,52 @@ import { Reveal } from "./Reveal";
 
 const solutions = [
   {
+    index: "01",
     title: "AI Systems",
-    text: "Assistants and agents with retrieval, evaluation, and production guardrails — built so your team can trust what the model does next.",
+    text: "Production-ready copilots, agents, and decision support—grounded in your data and governed for the work that matters.",
     href: "/ai",
-    image: "/images/mega-card-ai.jpg",
-    accent: "#3985BE",
+    image: "/images/solutions/ai-systems.png",
+    tint: "#d9e8ee",
+    artClass: "h-[66%] w-[58%]",
   },
   {
+    index: "02",
     title: "Custom Software",
-    text: "Web apps and internal tools with clean UX and maintainable architecture — systems your teams actually want to open every day.",
+    text: "Purpose-built platforms and internal tools with clean UX, durable architecture, and clear ownership after launch.",
     href: "/services",
-    image: "/images/mega-card-bust.jpg",
-    accent: "#272727",
+    image: "/images/solutions/custom-software.png",
+    tint: "#e8e4d8",
+    artClass: "h-[64%] w-[62%]",
   },
   {
-    title: "Government",
-    text: "Tender-ready delivery with documentation and security public programs expect — from scoping through award and audit.",
+    index: "03",
+    title: "Public Sector",
+    text: "Secure, procurement-ready technology for agencies—with the documentation, controls, and delivery discipline public work demands.",
     href: "/government",
-    image: "/images/mega-card-gov.jpg",
-    accent: "#4C9E82",
+    image: "/images/solutions/public-sector.png",
+    tint: "#cae3da",
+    artClass: "h-[68%] w-[62%]",
   },
   {
-    title: "Reporting",
-    text: "Dashboards, data platforms, and audit-ready outputs that turn operations into decisions leadership can stand behind.",
-    href: "/services#data",
-    image: "/images/mega-card-report.jpg",
-    accent: "#814300",
+    index: "04",
+    title: "Customer Marketing",
+    text: "Positioning, enablement, and growth programs that turn complex products into clear stories customers can understand and adopt.",
+    href: "/capacity-building",
+    image: "/images/solutions/customer-marketing.png",
+    tint: "#e7ddd4",
+    artClass: "h-[61%] w-[72%]",
   },
 ];
 
-function ArrowIcon() {
+function ArrowIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
-    <svg width="23" height="19" viewBox="0 0 23 19" fill="none" aria-hidden>
+    <svg className={className} viewBox="0 0 16 16" fill="none" aria-hidden>
       <path
-        d="M14.136 18.72L12.216 16.928L17.72 11.072H0.28V8.48H17.72L12.216 2.624L14.136 0.863998L22.392 9.792L14.136 18.72Z"
-        fill="currentColor"
+        d="M3 8h10M9 4l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -56,55 +67,72 @@ export function Services() {
 
       <div className="relative w-full px-3 sm:px-4 lg:px-5">
         <Reveal>
-          <div className="mx-auto max-w-[1600px] text-center">
-            <h2
-              id="solutions-heading"
-              className="section-title text-[clamp(2rem,4.5vw,3.25rem)]"
-            >
-              Solutions that make a difference
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--brand-muted)] sm:text-lg">
-              Yaqeen helps enterprise and public-sector teams work faster and
-              smarter. AI-powered and integration-ready — everything you need to
-              ship durable systems with clear ownership.
-            </p>
+          <div className="mx-auto grid max-w-[1600px] gap-8 px-2 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:items-end lg:gap-16">
+            <div className="max-w-4xl">
+              <p className="home-solutions-eyebrow">What we build</p>
+              <h2
+                id="solutions-heading"
+                className="mt-4 font-display text-[clamp(2.4rem,5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.045em] text-[var(--brand-ink)] text-balance"
+              >
+                Built to make a measurable difference.
+              </h2>
+            </div>
+            <div className="lg:pb-1">
+              <p className="max-w-xl text-base leading-relaxed text-[var(--brand-muted)] sm:text-lg">
+                From intelligent systems to long-term adoption, Digentra brings
+                strategy, engineering, and enablement together around outcomes
+                your organization can see and sustain.
+              </p>
+              <Link
+                href="/services"
+                className="focus-ring mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-primary)]"
+              >
+                Explore all capabilities
+                <ArrowIcon className="h-3.5 w-3.5" />
+              </Link>
+            </div>
           </div>
         </Reveal>
 
-        <div className="mx-auto mt-14 grid max-w-[1600px] gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+        <div className="mx-auto mt-12 grid max-w-[1600px] gap-4 sm:mt-16 sm:gap-5 lg:grid-cols-2">
           {solutions.map((item, index) => (
             <Reveal key={item.title}>
               <Link
                 href={item.href}
-                className="home-solutions-card group focus-ring flex h-full flex-col"
-                style={{ transitionDelay: `${index * 40}ms` }}
+                className="home-solutions-card group focus-ring relative flex h-full min-h-[29rem] flex-col overflow-hidden rounded-[1.75rem] no-underline sm:min-h-[32rem]"
+                style={{
+                  backgroundColor: item.tint,
+                  transitionDelay: `${index * 50}ms`,
+                }}
               >
-                <div className="home-solutions-card-top">
-                  <div className="home-solutions-card-img">
-                    <Image
-                      src={item.image}
-                      alt=""
-                      fill
-                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                    />
+                <div className="home-solutions-card-grid" aria-hidden />
+                <div className="relative z-[2] flex items-start justify-between gap-5 p-7 sm:p-9">
+                  <div className="max-w-[22rem]">
+                    <span className="font-mono text-xs font-medium tracking-[0.14em] text-[var(--brand-ink)]/45">
+                      {item.index}
+                    </span>
+                    <h3 className="mt-4 font-display text-[clamp(1.65rem,2.7vw,2.5rem)] font-semibold leading-[1.06] tracking-[-0.035em] text-[var(--brand-ink)]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-[0.975rem] leading-relaxed text-[var(--brand-ink)]/75 sm:text-base">
+                      {item.text}
+                    </p>
                   </div>
-                  <span className="home-solutions-card-arrow">
+                  <span className="home-solutions-arrow flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--brand-primary)] text-white">
                     <ArrowIcon />
                   </span>
                 </div>
-                <div className="home-solutions-card-bottom">
-                  <h3 className="flex items-center gap-2.5 text-xl font-semibold tracking-tight text-[var(--brand-ink)] sm:text-2xl">
-                    <span
-                      className="inline-block h-2.5 w-2.5 shrink-0 rounded-full"
-                      style={{ backgroundColor: item.accent }}
-                      aria-hidden
-                    />
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[var(--brand-muted)] sm:text-[0.975rem]">
-                    {item.text}
-                  </p>
+                <div
+                  className={`pointer-events-none absolute bottom-0 right-0 z-[1] ${item.artClass}`}
+                  aria-hidden
+                >
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    className="home-solutions-art object-contain object-right-bottom"
+                    sizes="(max-width: 1024px) 90vw, 45vw"
+                  />
                 </div>
               </Link>
             </Reveal>

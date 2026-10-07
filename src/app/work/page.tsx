@@ -5,8 +5,9 @@ import { Portfolio } from "@/components/Portfolio";
 import { SolutionPageHero, SolutionTrust } from "@/components/SolutionPage";
 
 export const metadata: Metadata = {
-  title: "Selected Work — Yaqeen Techongly",
-  description: "Selected projects across manufacturing, MIS, mental health, and conversational AI.",
+  title: "Selected Work — Digentra",
+  description:
+    "Selected Digentra outcomes across AI systems, custom software, and public-sector delivery.",
 };
 
 export default function WorkPage() {
@@ -21,8 +22,10 @@ export default function WorkPage() {
             real outcomes
           </>
         }
-        intro="A sample of systems and products we’ve helped teams ship — from operations platforms to AI assistants."
-        ctaLabel="Start a conversation"
+        intro="A sample of systems we’ve helped teams ship — from grounded AI copilots to enterprise platforms and public-sector delivery."
+        ctaLabel="Talk to us"
+        visual="/images/hero-work-engraved.png"
+        visualAlt="Engraved hand arranging a portfolio of product work"
       />
       <SolutionTrust />
       <Portfolio />

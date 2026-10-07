@@ -12,94 +12,94 @@ import {
 
 const pillars = [
   {
-    title: "AI career kickstart",
-    text: "Practical AI tooling, a project you can show, and how hiring managers actually evaluate AI literacy — in 2–3 weeks.",
-    image: "/images/mega-whats-new-ai.jpg",
+    title: "Product enablement",
+    text: "Train ops and product teams on Digentra software — workflows, review gates, and how to trust AI-assisted decisions.",
+    image: "/images/hero-enablement-engraved.png",
   },
   {
-    title: "Interview lab",
-    text: "Short blocks on communication, system thinking, and live problem framing — built for real interview loops.",
-    image: "/images/usecase-capacity.jpg",
+    title: "Customer marketing",
+    text: "Messaging, demos, and outreach content that help Digentra reach enterprise and public-sector buyers clearly.",
+    image: "/images/engrave-ai.png",
   },
   {
-    title: "Portfolio sprint",
-    text: "Turn scattered work into a coherent story: repos, demos, case write-ups, and positioning recruiters trust.",
-    image: "/images/mega-card-bust.jpg",
+    title: "Adoption sprints",
+    text: "Short programs that turn rollout into habits — playbooks, office hours, and proof that skills stick after go-live.",
+    image: "/images/hero-about-engraved.png",
   },
 ];
 
 const features = [
   {
-    title: "Training that works for your goals",
-    text: "Scattered courses and noisy certificates don’t just drain your time — they stall careers. Yaqeen combines short intensives, career coaching, and certification paths so people stay focused on outcomes that get them hired and promoted.",
-    image: "/images/usecase-capacity.png",
-    imageAlt: "Capacity building program",
+    title: "Enablement that serves Digentra products",
+    text: "Generic courses stall adoption. Digentra pairs customer marketing with hands-on enablement so teams learn products in context — and buyers hear a clear story.",
+    image: "/images/hero-enablement-engraved.png",
+    imageAlt: "Customer marketing and enablement",
     href: "/contact",
     linkLabel: "Talk about your goals",
   },
   {
-    title: "Skills, coaching, and proof — all in one place",
-    text: "Say goodbye to hopping between bootcamps, résumé sites, and half-finished MOOCs. One partner for AI fluency, interview practice, portfolio proof, and team enablement.",
-    image: "/images/digentra-hero-ai.png",
-    imageAlt: "AI and technology training",
+    title: "Skills, messaging, and proof — together",
+    text: "One partner for product fluency, buyer-facing content, and internal champions — not a pile of unused slide decks.",
+    image: "/images/hero-ai-engraved.png",
+    imageAlt: "AI product enablement",
     href: "/ai",
-    linkLabel: "Explore AI systems",
+    linkLabel: "Explore AI Systems",
   },
   {
-    title: "Customize programs to your risk and timeline",
-    text: "Cut down on generic syllabi and keep cohorts focused on real constraints — visa timelines, caregiving, career breaks, and what success means for your role or team.",
-    image: "/images/digentra-why-partner.png",
+    title: "Programs tuned to your rollout",
+    text: "Cut generic syllabi. We match intensity to your timelines, stakeholder maps, and how success is measured for your Digentra deployment.",
+    image: "/images/hero-about-engraved.png",
     imageAlt: "Partnership in learning",
   },
 ];
 
 const tracks = [
   {
-    title: "AI & automation",
+    title: "Product fluency",
     items: [
-      "Generative AI in real workflows — prompts, evaluation, guardrails",
-      "Lightweight automation: APIs, scripts, and when not to use AI",
-      "Ethical and security basics interviewers expect you to mention",
+      "Workflows and review gates in practice",
+      "When to trust AI recommendations — and when to escalate",
+      "Documentation teams can defend and reuse",
     ],
   },
   {
-    title: "Growth & social media",
+    title: "Customer marketing",
     items: [
-      "Sustainable posting rhythm and analytics that matter",
-      "Content systems for individuals building a tech brand",
-      "Campaign thinking tied to measurable outcomes",
+      "Positioning Digentra for enterprise and public-sector buyers",
+      "Demo narratives, one-pagers, and campaign rhythms that stick",
+      "Pipeline fundamentals tied to measurable outreach outcomes",
     ],
   },
   {
-    title: "Sales & marketing",
+    title: "Champion enablement",
     items: [
-      "Discovery, storytelling, and objection handling",
-      "Enablement assets you can reuse in real sales cycles",
-      "B2B vs B2C motions for the role you want",
+      "Office hours and playbooks for ops and product leads",
+      "Change management that survives the next hire",
+      "Success metrics leadership can track after go-live",
     ],
   },
   {
-    title: "Core tech fluency",
+    title: "AI literacy for teams",
     items: [
-      "Cloud concepts, CI/CD vocabulary, and how teams ship",
-      "Data literacy for non-specialists",
-      "Security awareness that shows up in interviews",
+      "How grounded GenAI works inside Digentra systems",
+      "Security and evaluation basics stakeholders expect",
+      "Responsible use patterns for regulated teams",
     ],
   },
   {
-    title: "Industry-specific tracks",
+    title: "Team rollout tracks",
     items: [
-      "Vertical scenarios and compliance touchpoints",
-      "Role-based paths: ops, support, IC, lead",
+      "Role-based paths for operators, reviewers, admins, and executives",
       "Co-built with your SMEs for internal programs",
+      "Virtual, on-site, or hybrid formats",
     ],
   },
   {
-    title: "Certifications & platforms",
+    title: "Growth content systems",
     items: [
-      "Salesforce, cloud, and ecosystem exams",
-      "Mapping certifications to job families",
-      "Practice modes that mirror vendor exam style",
+      "Reusable assets for sales and partnership conversations",
+      "Analytics that show which messages move buyers",
+      "Sustainable publishing without noise",
     ],
   },
 ];
@@ -108,24 +108,24 @@ const faqs = [
   {
     question: "Who are these programs for?",
     answer:
-      "Individuals switching into tech or AI-adjacent roles, and enterprise or public-sector teams that need practical enablement — not slide decks that gather dust.",
+      "Teams adopting Digentra products, customer marketing partners, and enterprise or public-sector groups that need practical enablement — not job-bootcamp curricula.",
   },
   {
     question: "How long do programs run?",
     answer:
-      "Most intensives are 2–4 week blocks. Career coaching and team enablement can run longer with clear milestones. Virtual, in-person, or hybrid.",
+      "Most enablement sprints are 2–4 week blocks. Customer marketing retainers and champion coaching can run longer with clear milestones.",
   },
   {
-    question: "Do you offer certifications like Salesforce?",
+    question: "Is this career training or product enablement?",
     answer:
-      "Yes. We support structured certification paths with study plans and drills mapped to the jobs those credentials actually unlock.",
+      "Product and customer marketing enablement for Digentra. We focus on adoption, messaging, and outcomes around our software — not generic job-placement courses.",
   },
   {
     question: "Can you train our internal team?",
     answer:
-      "Yes. We co-build tracks with your SMEs, role maps, and compliance touchpoints so enablement sticks after the cohort ends.",
+      "Yes. We co-build tracks with your SMEs and rollout plan so enablement sticks after the cohort ends.",
     href: "/contact",
-    linkLabel: "Plan a cohort",
+    linkLabel: "Plan a program",
   },
 ];
 
@@ -133,28 +133,28 @@ export function CapacityBuildingDetail() {
   return (
     <div>
       <SolutionPageHero
-        eyebrow="Solutions · Training"
+        eyebrow="Solutions · Customer Marketing"
         title={
           <>
-            Capacity building
+            Customer marketing
             <br />
-            that works for you
+            that drives adoption
           </>
         }
-        intro="Scattered courses and noisy certificates don’t just drain your time — they stall careers. Yaqeen combines short intensives, coaching, and proof of skill so people stay focused on outcomes that get them hired and promoted."
+        intro="Enablement and marketing programs built around Digentra products — so teams adopt what you ship and buyers hear a clear, credible story."
         ctaLabel="Talk about your goals"
         secondaryHref="/ai"
-        secondaryLabel="Explore AI"
-        visual="/images/usecase-capacity.png"
-        visualAlt="Capacity building and training"
+        secondaryLabel="Explore AI Systems"
+        visual="/images/hero-enablement-engraved.png"
+        visualAlt="Engraved figures sharing knowledge and an idea"
       />
-      <SolutionTrust headline="Trusted by learners and teams building real momentum" />
-      <SolutionPillars label="Fast & streamlined" pillars={pillars} />
+      <SolutionTrust headline="Trusted by teams rolling out Digentra products" />
+      <SolutionPillars label="How we help you grow" pillars={pillars} />
       <SolutionFeatures features={features} />
       <SolutionQuote
-        quote="Training that connected to real interviews and portfolios. Our cohort finally had momentum instead of another unfinished course — and the tools stuck after the program ended."
-        name="Sara Habibi"
-        role="Learning partner, Capacity-building program"
+        quote="Customer marketing and enablement that actually stuck. Our team learned Digentra products in context — and we could speak to buyers with confidence instead of another unused playbook."
+        name="Sam Ortiz"
+        role="Customer marketing lead, Enterprise software"
       />
 
       <section className="py-20 sm:py-28" aria-labelledby="cb-tracks-heading">
@@ -165,11 +165,10 @@ export function CapacityBuildingDetail() {
               id="cb-tracks-heading"
               className="section-title mx-auto mt-4 max-w-2xl text-center text-[clamp(1.75rem,3.5vw,2.5rem)]"
             >
-              Topics we teach deeply
+              Programs built around Digentra
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-base leading-relaxed text-[var(--brand-muted)] sm:text-lg">
-              Mix modules for your situation — whether you&apos;re upskilling a team or building an
-              individual path toward a new role.
+              Mix modules for your rollout — product fluency, customer marketing, and champion enablement.
             </p>
           </Reveal>
 
@@ -200,7 +199,7 @@ export function CapacityBuildingDetail() {
                 href="/contact"
                 className="focus-ring btn-solid inline-flex gap-2 px-7 py-3.5 text-sm"
               >
-                Build a custom track
+                Build a custom program
                 <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden>
                   <path
                     d="M3 8h10M9 4l4 4-4 4"

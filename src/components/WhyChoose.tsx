@@ -8,51 +8,52 @@ import { Reveal } from "./Reveal";
 
 const tabs = [
   {
-    id: "reviews",
-    label: "Faster Delivery",
-    headline: "Projects at 10x clarity",
-    text: "Design workflows to match your policies and procedures, so every engineer and stakeholder works the same way. Your team spends less time on status theater and more time on the decisions that need judgment.",
-    emphasis: "Today’s programs move quickly. Your delivery should, too.",
+    id: "delivery",
+    label: "Clear Delivery",
+    headline: "Scope that ships — not endless decks",
+    text: "Digentra turns goals into working software with clear milestones, honest trade-offs, and ownership your team keeps after go-live.",
+    emphasis: "Clarity in the plan. Precision in the build.",
     href: "/services",
-    image: "/images/mega-whats-new-bust.jpg",
+    image: "/images/workflows/delivery.png",
   },
   {
-    id: "automation",
-    label: "Smart Automation",
-    headline: "Task-crushing automation",
-    text: "Think your processes are too specific to automate? Think again. We wire triggers, conditions, and actions with pinpoint precision — so repetitive work runs itself with an audit-ready record.",
-    emphasis: "Set it once. Rely on it every time.",
-    href: "/services",
-    image: "/images/mega-card-report.jpg",
+    id: "ai",
+    label: "Production AI",
+    headline: "AI your operators can trust",
+    text: "Grounded retrieval, evaluation, and human review gates — so copilots and agents support real work instead of inventing answers.",
+    emphasis: "Intelligence with guardrails, not demos that fade.",
+    href: "/ai",
+    image: "/images/workflows/ai.png",
   },
   {
-    id: "profiles",
-    label: "Full Context",
-    headline: "A 360° view of every program",
-    text: "We unify requirements, data, prior decisions, and communications into a single, easy-to-navigate workspace. With complete context, teams move faster and decide with confidence.",
-    emphasis: "Want an x-ray view of your initiative? Look no further.",
-    href: "/work",
-    image: "/images/mega-card-bust.jpg",
+    id: "security",
+    label: "Secure by Default",
+    headline: "Security that matches the risk",
+    text: "Access control, hardening, monitoring, and practical policies — calibrated for enterprise and public-sector environments.",
+    emphasis: "Compliance as part of delivery, not a scramble before launch.",
+    href: "/services#security",
+    image: "/images/workflows/security.png",
   },
   {
     id: "integrations",
-    label: "Instant Integrations",
-    headline: "Instant integrations",
-    text: "Yaqeen connects to the platforms you already trust — cloud, data, CRM, and collaboration tools — so your team stays focused in one place instead of hopping between tabs.",
-    emphasis: "Finally, a partner that puts your tools and data in the same plan.",
+    label: "Integrations",
+    headline: "Connect the systems you already use",
+    text: "Digentra plugs into cloud, data, CRM, and collaboration tools so teams stay in one plan instead of hopping between tabs.",
+    emphasis: "Your stack, one coherent delivery plan.",
     href: "/services",
-    image: "/images/mega-whats-new-gov.jpg",
+    image: "/images/workflows/integrations.png",
   },
 ];
 
 export function WhyChoose() {
   const [active, setActive] = useState(tabs[0].id);
   const current = tabs.find((t) => t.id === active) ?? tabs[0];
+  const currentIndex = tabs.findIndex((tab) => tab.id === current.id);
 
   return (
     <section
       id="why-us"
-      className="home-workflows relative scroll-mt-24 overflow-hidden py-20 sm:py-28"
+      className="home-workflows relative scroll-mt-24 overflow-hidden py-24 sm:py-32"
       aria-labelledby="why-heading"
     >
       <div className="home-workflows-bg" aria-hidden>
@@ -77,82 +78,79 @@ export function WhyChoose() {
           <div className="mx-auto max-w-3xl text-center">
             <p
               id="why-heading"
-              className="text-sm font-medium tracking-tight text-white/70"
+              className="home-workflows-eyebrow"
             >
-              Why teams choose Yaqeen
+              How we work
             </p>
-            <h2 className="mt-3 font-display text-[clamp(1.9rem,4.2vw,3.15rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-white">
-              <span key={current.id} className="tab-panel-crossfade inline-block">
-                {current.headline}
-              </span>
+            <h2 className="mt-4 font-display text-[clamp(2.1rem,4.5vw,3.75rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-[var(--brand-ink)] text-balance">
+              From a clear decision to a product that performs.
             </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--brand-muted)] sm:text-lg">
+              A disciplined approach to strategy, engineering, and launch—built
+              around measurable progress instead of unnecessary process.
+            </p>
           </div>
         </Reveal>
 
-        <div className="mt-14 grid items-center gap-10 lg:grid-cols-[200px_minmax(0,1fr)_minmax(240px,300px)] lg:gap-8 xl:grid-cols-[220px_minmax(0,1fr)_320px] xl:gap-10">
-          {/* Left vertical tabs */}
-          <Reveal>
-            <div
-              className="home-workflows-tabs"
-              role="tablist"
-              aria-label="Why choose Yaqeen"
-              aria-orientation="vertical"
-            >
-              {tabs.map((tab) => {
-                const selected = tab.id === active;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    role="tab"
-                    id={`why-tab-${tab.id}`}
-                    aria-selected={selected}
-                    aria-controls={`why-panel-${tab.id}`}
-                    className={`home-workflows-tab focus-ring ${selected ? "is-active" : ""}`}
-                    onClick={() => setActive(tab.id)}
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
-            </div>
-          </Reveal>
-
-          {/* Center full visual */}
+        <Reveal>
           <div
-            key={`${current.id}-visual`}
-            id={`why-panel-${current.id}`}
-            role="tabpanel"
-            aria-labelledby={`why-tab-${current.id}`}
-            className="tab-panel-crossfade home-workflows-visual"
+            className="home-workflows-tabs mt-12"
+            role="tablist"
+            aria-label="Why choose Digentra"
           >
-            <Image
-              src={current.image}
-              alt=""
-              width={1200}
-              height={750}
-              className="home-workflows-visual-img"
-              sizes="(max-width: 1024px) 100vw, 720px"
-              priority={false}
-            />
+            {tabs.map((tab, index) => {
+              const selected = tab.id === active;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  id={`why-tab-${tab.id}`}
+                  aria-selected={selected}
+                  aria-controls={`why-panel-${tab.id}`}
+                  className={`home-workflows-tab focus-ring ${selected ? "is-active" : ""}`}
+                  onClick={() => setActive(tab.id)}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
+        </Reveal>
 
-          {/* Right copy */}
-          <div key={`${current.id}-copy`} className="tab-panel-crossfade">
-            <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl lg:hidden">
+        <div
+          key={current.id}
+          id={`why-panel-${current.id}`}
+          role="tabpanel"
+          aria-labelledby={`why-tab-${current.id}`}
+          className="tab-panel-crossfade home-workflows-panel mt-5"
+        >
+          <div className="home-workflows-copy">
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-accent)]">
+                {current.label}
+              </p>
+              <span className="font-mono text-xs tracking-[0.12em] text-[var(--brand-muted)]/55">
+                {String(currentIndex + 1).padStart(2, "0")} / {String(tabs.length).padStart(2, "0")}
+              </span>
+            </div>
+            <h3 className="mt-4 font-display text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-[var(--brand-ink)]">
               {current.headline}
             </h3>
-            <p className="mt-3 text-[0.975rem] leading-relaxed text-white/80 sm:text-base lg:mt-0">
+            <p className="mt-5 text-base leading-relaxed text-[var(--brand-muted)]">
               {current.text}
             </p>
-            <p className="mt-5 text-[0.975rem] font-semibold leading-relaxed text-white sm:text-base">
-              {current.emphasis}
-            </p>
+            <div className="mt-7 rounded-2xl border border-[var(--brand-border)] bg-[var(--brand-bg)] p-5">
+              <p className="text-sm font-semibold leading-relaxed text-[var(--brand-ink)] sm:text-base">
+                {current.emphasis}
+              </p>
+            </div>
             <Link
               href={current.href}
-              className="focus-ring mt-8 inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+              className="focus-ring mt-8 inline-flex items-center gap-2 rounded-full bg-[var(--brand-primary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--brand-primary-hover)]"
             >
-              Learn more
+              Explore this capability
               <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden>
                 <path
                   d="M3 8h10M9 4l4 4-4 4"
@@ -163,6 +161,17 @@ export function WhyChoose() {
                 />
               </svg>
             </Link>
+          </div>
+
+          <div className="home-workflows-visual">
+            <Image
+              src={current.image}
+              alt=""
+              fill
+              className="home-workflows-visual-img"
+              sizes="(max-width: 1024px) 100vw, 65vw"
+              priority={false}
+            />
           </div>
         </div>
       </div>

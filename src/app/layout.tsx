@@ -9,13 +9,13 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Yaqeen Techongly — AI-powered software & systems",
+  title: "Digentra — AI-powered software company",
   description:
-    "AI-powered software, custom systems, cloud infrastructure, and government-ready delivery. Clear scope, secure systems, lasting partnerships.",
+    "Digentra is a US software company in Concord, CA. We build AI systems, custom software, and customer marketing programs for enterprise and public-sector teams.",
   openGraph: {
-    title: "Yaqeen Techongly — AI-powered software & systems",
+    title: "Digentra — AI-powered software company",
     description:
-      "A technology partner for enterprise and public-sector teams — from AI and custom software to compliant delivery.",
+      "A Concord, CA software company building AI systems, custom platforms, and customer marketing — for teams that need clarity and lasting ownership.",
   },
 };
 

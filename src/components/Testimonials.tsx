@@ -7,21 +7,21 @@ import { useEffect, useState } from "react";
 const quotes = [
   {
     quote:
-      "Before working with Yaqeen, our teams were stitching tools together by hand. Now officers and AI agents share one workspace — reviews move faster, and every award decision stays clear and auditable.",
-    name: "Amina Rahimi",
-    role: "Director of Digital Transformation, Enterprise operations",
+      "Before Digentra, our teams were stitching tools together by hand. Now AI and operators share one coherent plan — delivery moves faster, and every decision stays clear and auditable.",
+    name: "Jordan Hale",
+    role: "Director of Digital Transformation, Public-sector operations",
   },
   {
     quote:
-      "They understood procurement, security reviews, and the reality of public-sector timelines. The system went live with documentation our ministry could own — not a demo that disappeared after handoff.",
-    name: "Karim Naderi",
-    role: "Program lead, Government agency",
+      "They understood security reviews and real agency timelines. The system went live with documentation our office could own — not a demo that disappeared after handoff.",
+    name: "Maya Chen",
+    role: "Program lead, State technology office",
   },
   {
     quote:
-      "Training that connected to real interviews and portfolios. Our cohort finally had momentum instead of another unfinished course — and the tools stuck after the program ended.",
-    name: "Sara Habibi",
-    role: "Learning partner, Capacity-building program",
+      "Customer marketing and enablement that actually stuck. Our team learned the product in context — and we could speak to buyers with confidence instead of another unused playbook.",
+    name: "Sam Ortiz",
+    role: "Customer marketing lead, Enterprise software",
   },
 ];
 
@@ -32,7 +32,7 @@ export function Testimonials() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % quotes.length);
-    }, 6000);
+    }, 5000);
     return () => window.clearInterval(id);
   }, []);
 
@@ -96,12 +96,18 @@ export function Testimonials() {
         <div className="relative grid">
           {quotes.map((item, i) => {
             const active = i === index;
+            const previous = i === (index - 1 + quotes.length) % quotes.length;
             return (
               <figure
                 key={item.name}
-                className="col-start-1 row-start-1 flex flex-col items-center justify-center text-center transition-opacity duration-500"
+                className="col-start-1 row-start-1 flex flex-col items-center justify-center text-center transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                 style={{
                   opacity: active ? 1 : 0,
+                  transform: active
+                    ? "translate3d(0, 0, 0)"
+                    : previous
+                      ? "translate3d(-48px, 0, 0)"
+                      : "translate3d(48px, 0, 0)",
                   pointerEvents: active ? "auto" : "none",
                   gap: "clamp(3rem, 3.75vw, 4rem)",
                 }}

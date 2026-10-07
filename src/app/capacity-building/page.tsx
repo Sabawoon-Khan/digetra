@@ -4,13 +4,13 @@ import { CapacityBuildingDetail } from "@/components/capacity/CapacityBuildingDe
 import { PageShell } from "@/components/PageShell";
 
 export const metadata: Metadata = {
-  title: "Training & Capacity Building — Yaqeen Techongly",
+  title: "Customer Marketing & Enablement — Digentra",
   description:
-    "Short-term tech and AI training built for job outcomes: sprints, interview prep, portfolio support, certifications like Salesforce, and career coaching.",
+    "Customer marketing and product enablement from Digentra — adoption sprints, buyer messaging, and champion programs.",
   openGraph: {
-    title: "Training & Capacity Building — Yaqeen Techongly",
+    title: "Customer Marketing & Enablement — Digentra",
     description:
-      "Hands-on programs for people who need momentum — AI fluency, interviews, portfolio, and certs.",
+      "Help teams adopt Digentra products and reach enterprise and public-sector buyers with a clear story.",
   },
 };
 

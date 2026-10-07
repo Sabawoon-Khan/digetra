@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { HeroArt } from "@/components/HeroArt";
 
 import { DataFlowDiagram } from "./DataFlowDiagram";
 
@@ -47,16 +47,13 @@ export function DataShowcase() {
           </p>
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-2xl border border-neutral-200/90 bg-neutral-100/40 shadow-[0_18px_60px_-34px_rgba(0,0,0,0.14)] sm:mt-12">
-          <Image
-            src="/images/digentra-data-metrics.png"
-            alt="Abstract visualization of metrics, analytics, and data flowing into decisions"
-            width={1376}
-            height={768}
-            className="h-44 w-full object-cover object-center sm:h-52 md:h-56"
-            sizes="(max-width: 1152px) 100vw, 1152px"
-          />
-        </div>
+        <HeroArt
+          src="/images/hero-work-engraved.png"
+          alt="Engraved hand presenting verified data cards"
+          className="mt-10 sm:mt-12 mx-auto max-w-lg"
+          stageClassName="min-h-[14rem] sm:min-h-[16rem] md:min-h-[18rem] aspect-square"
+          sizes="(max-width: 1152px) 100vw, 520px"
+        />
 
         <div className="data-showcase-diagram mt-10 sm:mt-12">
           <p className="mb-4 text-center text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-neutral-400">

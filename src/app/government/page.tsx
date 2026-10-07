@@ -11,76 +11,74 @@ import {
 } from "@/components/SolutionPage";
 
 export const metadata: Metadata = {
-  title: "Government Contracts — Yaqeen Techongly",
+  title: "Public Sector — Digentra",
   description:
-    "Public-sector systems, tender-ready delivery, security, and handover for ministries and funded programs.",
+    "Digentra partners with US agencies on secure platforms, AI systems, and tender-ready delivery — with documentation teams can own after go-live.",
 };
 
 const pillars = [
   {
-    title: "Procure",
-    text: "Scoped work packages, milestones, and documentation that stand up to tender review — without slowing engineering.",
-    image: "/images/mega-card-gov.jpg",
+    title: "Discover",
+    text: "Clarify goals, constraints, and stakeholders so scope stays honest before build begins.",
+    image: "/images/hero-government-engraved.png",
   },
   {
     title: "Deliver",
-    text: "MIS platforms, citizen services, registries, and operational tools designed for institutional accountability.",
-    image: "/images/usecase-gov.jpg",
+    text: "Ship secure platforms and AI-assisted workflows with milestones leadership can track.",
+    image: "/images/engrave-gov.png",
   },
   {
-    title: "Hand over",
-    text: "Access control, hardening, runbooks, and training so agencies stay in control long after go-live.",
-    image: "/images/product-story-gov.jpg",
+    title: "Handover",
+    text: "Runbooks, access control, and training so your agency stays in control after go-live.",
+    image: "/images/hero-work-engraved.png",
   },
 ];
 
 const features = [
   {
-    title: "Public-sector systems that scale",
-    text: "Scattered vendors and noisy status reports don’t just drain your program — they put outcomes at risk. Yaqeen combines disciplined delivery, security posture, and clear ownership so your teams stay focused on services citizens actually use.",
-    image: "/images/usecase-gov.png",
-    imageAlt: "Government systems delivery",
+    title: "Built for public programs",
+    text: "Scattered tools and thin documentation drain agency teams. Digentra delivers secure systems with clear ownership — so programs move forward without losing auditability.",
+    image: "/images/hero-government-engraved.png",
+    imageAlt: "Government delivery workspace",
     href: "/contact",
-    linkLabel: "Discuss a contract",
+    linkLabel: "Talk to our team",
   },
   {
-    title: "Tender-ready delivery — all in one place",
-    text: "Say goodbye to tool hopping between proposal docs, engineering, and security reviews. One partner for scope, build, documentation, and audit trail — with milestones procurement can track.",
-    image: "/images/product-story-gov.jpg",
-    imageAlt: "Government product story",
+    title: "Tender-ready delivery",
+    text: "Documentation, security posture, and follow-through contracting offices expect — from scoping through launch and support.",
+    image: "/images/engrave-gov.png",
+    imageAlt: "Public-sector delivery",
     href: "/work",
-    linkLabel: "See public-sector work",
+    linkLabel: "See related work",
   },
   {
-    title: "Security & compliance to your risk appetite",
-    text: "Cut down on checklist theater and keep your team focused on real controls. Hardening, access policies, monitoring, and handover calibrated to agency requirements — not a generic template.",
-    image: "/images/digentra-why-partner.png",
-    imageAlt: "Partnership and trust",
+    title: "Security for public-sector risk",
+    text: "Access control, hardening, monitoring, and handover calibrated to agency requirements — so compliance is part of delivery, not an afterthought.",
+    image: "/images/hero-privacy-engraved.png",
+    imageAlt: "Security and trust",
   },
 ];
 
 const faqs = [
   {
-    question: "Do you support tender and RFP processes?",
+    question: "How does Digentra work with government teams?",
     answer:
-      "Yes. We help with scoped proposals, technical volumes, milestones, and the documentation procurement and audit teams expect — while keeping engineering delivery realistic.",
+      "As a US software company, we partner with agencies on AI systems, custom platforms, and secure delivery — with documentation and handover your team can own.",
   },
   {
-    question: "What kinds of government systems do you build?",
+    question: "Do you support tender and compliance requirements?",
     answer:
-      "MIS platforms, citizen-facing services, registries, case workflows, reporting systems, and the cloud infrastructure underneath them.",
-    href: "/work",
-    linkLabel: "View selected work",
+      "Yes. Security reviews, documentation, and audit-aware delivery are part of how we work with public-sector programs.",
   },
   {
     question: "How does handover work?",
     answer:
-      "Runbooks, access control, training, and knowledge transfer are part of delivery so your agency can operate and evolve the system after go-live.",
+      "Runbooks, access control, training, and knowledge transfer are part of rollout so your agency can operate and evolve the system after go-live.",
   },
   {
-    question: "Can you work alongside existing vendors?",
+    question: "Can Digentra connect to systems we already use?",
     answer:
-      "Often yes. We integrate with incumbent systems, data sources, and security reviews rather than forcing a rip-and-replace.",
+      "Yes. We integrate with existing data sources, collaboration tools, and security reviews rather than forcing a rip-and-replace.",
     href: "/contact",
     linkLabel: "Talk to our team",
   },
@@ -90,28 +88,28 @@ export default function GovernmentPage() {
   return (
     <PageShell>
       <SolutionPageHero
-        eyebrow="Solutions · Government"
+        eyebrow="Solutions · Public Sector"
         title={
           <>
-            Government contracts
+            Government delivery
             <br />
-            that work for you
+            that works for you
           </>
         }
-        intro="Scattered vendors and noisy reporting don’t just drain your program — they put public outcomes at risk. Yaqeen combines tender-ready delivery, secure systems, and lasting handover so agencies stay focused on the services that matter."
-        ctaLabel="Discuss a contract"
-        secondaryHref="/work"
-        secondaryLabel="See our work"
-        visual="/images/usecase-gov.png"
-        visualAlt="Government delivery visual"
+        intro="Digentra partners with US agencies on secure platforms, AI systems, and tender-ready delivery — with the documentation and follow-through public programs expect."
+        ctaLabel="Talk to us"
+        secondaryHref="/ai"
+        secondaryLabel="See AI Systems"
+        visual="/images/hero-government-engraved.png"
+        visualAlt="Engraved civic figure holding a protective shield"
       />
-      <SolutionTrust headline="Trusted by institutions delivering public programs" />
-      <SolutionPillars label="Fast & streamlined" pillars={pillars} />
+      <SolutionTrust headline="Built for agencies that need clarity at scale" />
+      <SolutionPillars label="How Digentra works with agencies" pillars={pillars} />
       <SolutionFeatures features={features} />
       <SolutionQuote
-        quote="They understood procurement, security reviews, and the reality of public-sector timelines. The system went live with documentation our ministry could own — not a demo that disappeared after handoff."
-        name="Karim Naderi"
-        role="Program lead, Government agency"
+        quote="They understood security reviews and real agency timelines. The system went live with documentation our office could own — not a demo that disappeared after handoff."
+        name="Maya Chen"
+        role="Program lead, State technology office"
       />
       <SolutionFAQ items={faqs} />
     </PageShell>
