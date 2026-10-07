@@ -24,25 +24,23 @@ export function AISolutions() {
     <section id="ai" className="scroll-mt-24" aria-labelledby="ai-heading">
       <GenAIShowcase />
 
-      <div className="border-b border-neutral-200 bg-white py-20 sm:py-24">
+      <div className="border-b border-[var(--brand-border)] bg-[var(--brand-bg)] py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
           <Reveal>
-            <p className="text-center text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">
-              Capabilities in depth
-            </p>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-neutral-600">
+            <p className="section-label text-center">Capabilities in depth</p>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-[var(--brand-muted)]">
               Below the surface of prototypes — how we engineer AI to last.
             </p>
           </Reveal>
 
-          <div className="reveal-stagger mt-12 grid gap-5 md:grid-cols-3 md:gap-6">
+          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-[var(--brand-border)] bg-[var(--brand-border)] md:grid-cols-3">
             {pillars.map((p) => (
               <Reveal key={p.title}>
-                <article className="h-full rounded-xl border border-neutral-200 bg-neutral-50/80 p-6 transition-shadow duration-300 hover:shadow-[0_20px_50px_-24px_rgba(0,0,0,0.12)] sm:p-7">
-                  <h3 className="font-display text-lg font-bold tracking-tight text-neutral-950">
+                <article className="h-full bg-white p-6 transition-colors hover:bg-[var(--brand-bg)] sm:p-8">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--brand-ink)]">
                     {p.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-600">{p.body}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-[var(--brand-muted)]">{p.body}</p>
                 </article>
               </Reveal>
             ))}

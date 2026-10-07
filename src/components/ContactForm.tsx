@@ -48,20 +48,20 @@ export function ContactForm() {
   if (status === "sent") {
     return (
       <div
-        className="flex flex-col items-center rounded-lg border border-neutral-200 bg-white p-10 text-center"
+        className="flex flex-col items-center rounded-[1.5rem] border border-[var(--brand-border)] bg-white p-10 text-center shadow-[var(--brand-shadow)]"
         role="status"
         aria-live="polite"
       >
-        <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-neutral-950 bg-neutral-950 text-white">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--brand-primary)] text-white">
           <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden>
             <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <p className="mt-4 text-lg font-bold text-neutral-950">Message sent</p>
-        <p className="mt-2 text-sm text-neutral-600">
+        <p className="mt-4 text-lg font-semibold text-[var(--brand-ink)]">Message sent</p>
+        <p className="mt-2 text-sm text-[var(--brand-muted)]">
           We&apos;ll respond within one business day. You can also email{" "}
           <a
-            className="font-semibold text-neutral-950 underline underline-offset-2 hover:text-neutral-600"
+            className="font-semibold text-[var(--brand-primary)] underline underline-offset-2 hover:opacity-80"
             href={`mailto:${INFO_EMAIL}`}
           >
             {INFO_EMAIL}
@@ -72,17 +72,21 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "focus-ring mt-1.5 w-full rounded-md border border-neutral-200 bg-white px-4 py-3.5 text-neutral-950 outline-none transition placeholder:text-neutral-400 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-950/10";
+    "focus-ring mt-1.5 w-full rounded-full border border-[var(--brand-border)] bg-[var(--brand-bg)] px-5 py-3.5 text-[var(--brand-ink)] outline-none transition placeholder:text-neutral-400 focus:border-[var(--brand-primary)] focus:bg-white focus:ring-2 focus:ring-[var(--brand-primary)]/15";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-5 rounded-[1.5rem] border border-[var(--brand-border)] bg-white p-6 shadow-[var(--brand-shadow)] sm:p-8"
+      noValidate
+    >
       {errorMessage ? (
-        <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900" role="alert">
+        <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900" role="alert">
           {errorMessage}
         </p>
       ) : null}
       <div>
-        <label htmlFor="contact-name" className="block text-sm font-semibold text-neutral-700">
+        <label htmlFor="contact-name" className="block text-sm font-semibold text-[var(--brand-ink)]">
           Name
         </label>
         <input
@@ -97,7 +101,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="contact-email" className="block text-sm font-semibold text-neutral-700">
+        <label htmlFor="contact-email" className="block text-sm font-semibold text-[var(--brand-ink)]">
           Email
         </label>
         <input
@@ -112,7 +116,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="contact-message" className="block text-sm font-semibold text-neutral-700">
+        <label htmlFor="contact-message" className="block text-sm font-semibold text-[var(--brand-ink)]">
           Message
         </label>
         <textarea
@@ -121,14 +125,14 @@ export function ContactForm() {
           required
           rows={5}
           disabled={status === "sending"}
-          className={`${inputClass} resize-y`}
-          placeholder="Tell us about your project or question…"
+          className={`${inputClass} resize-y rounded-3xl`}
+          placeholder="Tell us about your project, RFP, or question…"
         />
       </div>
       <button
         type="submit"
         disabled={status === "sending"}
-        className="focus-ring btn-primary w-full rounded-md py-3.5 text-[0.9375rem] font-semibold transition enabled:hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-10"
+        className="focus-ring btn-solid w-full py-3.5 text-[0.9375rem] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-10"
       >
         {status === "sending" ? "Sending…" : "Send message"}
       </button>

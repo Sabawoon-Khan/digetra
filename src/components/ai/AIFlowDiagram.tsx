@@ -23,7 +23,7 @@ export function AIFlowDiagram() {
             <stop offset="100%" stopColor="#f4f4f5" />
           </linearGradient>
           <linearGradient id="ai-node-llm" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#eef2ff" />
+            <stop offset="0%" stopColor="#eef8f5" />
             <stop offset="55%" stopColor="#ffffff" />
             <stop offset="100%" stopColor="#f8fafc" />
           </linearGradient>
@@ -32,7 +32,7 @@ export function AIFlowDiagram() {
             <stop offset="100%" stopColor="#f1f5f9" />
           </linearGradient>
           <linearGradient id="ai-node-guard" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#fffbeb" />
+            <stop offset="0%" stopColor="#f7f6f2" />
             <stop offset="100%" stopColor="#fafaf9" />
           </linearGradient>
           <linearGradient id="ai-node-ship" x1="0" y1="0" x2="1" y2="1">
@@ -47,16 +47,16 @@ export function AIFlowDiagram() {
             y2="0"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0%" stopColor="#a5b4fc" />
-            <stop offset="50%" stopColor="#6366f1" />
-            <stop offset="100%" stopColor="#818cf8" />
+            <stop offset="0%" stopColor="#9ecfc4" />
+            <stop offset="50%" stopColor="#2a7a6c" />
+            <stop offset="100%" stopColor="#3d9a88" />
           </linearGradient>
           <filter id="ai-card-shadow" x="-8%" y="-8%" width="116%" height="116%">
             <feDropShadow dx="0" dy="1" stdDeviation="1.2" floodColor="#0f172a" floodOpacity="0.06" />
           </filter>
           <filter id="ai-llm-glow" x="-25%" y="-25%" width="150%" height="150%">
             <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="b" />
-            <feFlood floodColor="#6366f1" floodOpacity="0.12" result="c" />
+            <feFlood floodColor="#2a7a6c" floodOpacity="0.12" result="c" />
             <feComposite in="c" in2="b" operator="in" result="g" />
             <feMerge>
               <feMergeNode in="g" />
@@ -72,7 +72,7 @@ export function AIFlowDiagram() {
             orient="auto"
             markerUnits="strokeWidth"
           >
-            <path d="M0,0 L9,4.5 L0,9 Z" fill="#6366f1" />
+            <path d="M0,0 L9,4.5 L0,9 Z" fill="#2a7a6c" />
           </marker>
         </defs>
 
@@ -232,7 +232,7 @@ export function AIFlowDiagram() {
         <text x="340" y="124" textAnchor="middle" fill="#1e1b4b" style={{ fontSize: "11px" }} className="font-semibold">
           LLM inference
         </text>
-        <text x="340" y="141" textAnchor="middle" fill="#6366f1" style={{ fontSize: "8px" }}>
+        <text x="340" y="141" textAnchor="middle" fill="#2a7a6c" style={{ fontSize: "8px" }}>
           private · VPC
         </text>
         <text x="340" y="155" textAnchor="middle" fill="#71717a" style={{ fontSize: "8px" }}>

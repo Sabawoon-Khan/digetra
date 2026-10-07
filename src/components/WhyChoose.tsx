@@ -1,102 +1,169 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 import { Reveal } from "./Reveal";
 
-const points = [
+const tabs = [
   {
-    title: "Outcome-first approach",
-    text: "We align technical choices with business goals — no shelf-ware, no mystery scope.",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <path d="M22 4L12 14.01l-3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
+    id: "reviews",
+    label: "Faster Delivery",
+    headline: "Projects at 10x clarity",
+    text: "Design workflows to match your policies and procedures, so every engineer and stakeholder works the same way. Your team spends less time on status theater and more time on the decisions that need judgment.",
+    emphasis: "Today’s programs move quickly. Your delivery should, too.",
+    href: "/services",
+    image: "/images/mega-whats-new-bust.jpg",
   },
   {
-    title: "Transparent process",
-    text: "Clear milestones, readable documentation, and regular checkpoints you can plan around.",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-        <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
+    id: "automation",
+    label: "Smart Automation",
+    headline: "Task-crushing automation",
+    text: "Think your processes are too specific to automate? Think again. We wire triggers, conditions, and actions with pinpoint precision — so repetitive work runs itself with an audit-ready record.",
+    emphasis: "Set it once. Rely on it every time.",
+    href: "/services",
+    image: "/images/mega-card-report.jpg",
   },
   {
-    title: "Built to last",
-    text: "Maintainable systems, sensible defaults, and knowledge transfer so you stay in control.",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
+    id: "profiles",
+    label: "Full Context",
+    headline: "A 360° view of every program",
+    text: "We unify requirements, data, prior decisions, and communications into a single, easy-to-navigate workspace. With complete context, teams move faster and decide with confidence.",
+    emphasis: "Want an x-ray view of your initiative? Look no further.",
+    href: "/work",
+    image: "/images/mega-card-bust.jpg",
   },
   {
-    title: "Security-minded",
-    text: "Privacy and resilience are part of the blueprint — not an afterthought before launch.",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" strokeWidth="2" />
-        <path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
+    id: "integrations",
+    label: "Instant Integrations",
+    headline: "Instant integrations",
+    text: "Yaqeen connects to the platforms you already trust — cloud, data, CRM, and collaboration tools — so your team stays focused in one place instead of hopping between tabs.",
+    emphasis: "Finally, a partner that puts your tools and data in the same plan.",
+    href: "/services",
+    image: "/images/mega-whats-new-gov.jpg",
   },
 ];
 
 export function WhyChoose() {
+  const [active, setActive] = useState(tabs[0].id);
+  const current = tabs.find((t) => t.id === active) ?? tabs[0];
+
   return (
     <section
       id="why-us"
-      className="scroll-mt-24 border-b border-neutral-200 bg-[#fafafa] py-24 sm:py-32"
+      className="home-workflows relative scroll-mt-24 overflow-hidden py-20 sm:py-28"
       aria-labelledby="why-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+      <div className="home-workflows-bg" aria-hidden>
+        <Image
+          src="/images/hero-maze-pattern-top.png"
+          alt=""
+          width={420}
+          height={280}
+          className="home-workflows-maze home-workflows-maze-tr"
+        />
+        <Image
+          src="/images/hero-maze-pattern.png"
+          alt=""
+          width={420}
+          height={280}
+          className="home-workflows-maze home-workflows-maze-bl"
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">
-              Why Yaqeen Techongly
-            </p>
-            <h2
+          <div className="mx-auto max-w-3xl text-center">
+            <p
               id="why-heading"
-              className="mt-4 text-3xl font-extrabold tracking-[-0.03em] text-neutral-950 sm:text-4xl lg:text-[2.75rem]"
+              className="text-sm font-medium tracking-tight text-white/70"
             >
-              A partner you can{" "}
-              <span className="accent-mark">count on</span>
-            </h2>
-            <p className="mx-auto mt-5 max-w-xl text-lg text-neutral-600">
-              Calm, capable, and precise — for organizations that value follow-through.
+              Why teams choose Yaqeen
             </p>
+            <h2 className="mt-3 font-display text-[clamp(1.9rem,4.2vw,3.15rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-white">
+              <span key={current.id} className="tab-panel-crossfade inline-block">
+                {current.headline}
+              </span>
+            </h2>
           </div>
         </Reveal>
 
-        <Reveal className="mt-12 sm:mt-14">
-          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-[0_22px_72px_-38px_rgba(0,0,0,0.14)]">
+        <div className="mt-14 grid items-center gap-10 lg:grid-cols-[200px_minmax(0,1fr)_minmax(240px,300px)] lg:gap-8 xl:grid-cols-[220px_minmax(0,1fr)_320px] xl:gap-10">
+          {/* Left vertical tabs */}
+          <Reveal>
+            <div
+              className="home-workflows-tabs"
+              role="tablist"
+              aria-label="Why choose Yaqeen"
+              aria-orientation="vertical"
+            >
+              {tabs.map((tab) => {
+                const selected = tab.id === active;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    id={`why-tab-${tab.id}`}
+                    aria-selected={selected}
+                    aria-controls={`why-panel-${tab.id}`}
+                    className={`home-workflows-tab focus-ring ${selected ? "is-active" : ""}`}
+                    onClick={() => setActive(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+          </Reveal>
+
+          {/* Center full visual */}
+          <div
+            key={`${current.id}-visual`}
+            id={`why-panel-${current.id}`}
+            role="tabpanel"
+            aria-labelledby={`why-tab-${current.id}`}
+            className="tab-panel-crossfade home-workflows-visual"
+          >
             <Image
-              src="/images/digentra-why-partner.png"
-              alt="Abstract composition suggesting trust, balance, and long-term partnership"
-              width={1376}
-              height={768}
-              className="h-48 w-full object-cover object-center sm:h-52"
-              sizes="(max-width: 896px) 100vw, 896px"
+              src={current.image}
+              alt=""
+              width={1200}
+              height={750}
+              className="home-workflows-visual-img"
+              sizes="(max-width: 1024px) 100vw, 720px"
+              priority={false}
             />
           </div>
-        </Reveal>
 
-        <div className="reveal-stagger mt-16 grid gap-4 sm:grid-cols-2">
-          {points.map((p) => (
-            <Reveal key={p.title}>
-              <div className="card-flat flex h-full gap-5 rounded-lg bg-white p-7">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-neutral-200 bg-neutral-950 text-white">
-                  {p.icon}
-                </span>
-                <div>
-                  <h3 className="font-bold text-neutral-950">{p.title}</h3>
-                  <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-neutral-600">{p.text}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+          {/* Right copy */}
+          <div key={`${current.id}-copy`} className="tab-panel-crossfade">
+            <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl lg:hidden">
+              {current.headline}
+            </h3>
+            <p className="mt-3 text-[0.975rem] leading-relaxed text-white/80 sm:text-base lg:mt-0">
+              {current.text}
+            </p>
+            <p className="mt-5 text-[0.975rem] font-semibold leading-relaxed text-white sm:text-base">
+              {current.emphasis}
+            </p>
+            <Link
+              href={current.href}
+              className="focus-ring mt-8 inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+            >
+              Learn more
+              <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

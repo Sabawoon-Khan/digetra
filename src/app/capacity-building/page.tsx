@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
 import { CapacityBuildingDetail } from "@/components/capacity/CapacityBuildingDetail";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { PageShell } from "@/components/PageShell";
 
 export const metadata: Metadata = {
   title: "Training & Capacity Building — Yaqeen Techongly",
@@ -17,10 +16,8 @@ export const metadata: Metadata = {
 
 export default function CapacityBuildingPage() {
   return (
-    <>
-      <Header />
+    <PageShell>
       <CapacityBuildingDetail />
-      <Footer />
-    </>
+    </PageShell>
   );
 }

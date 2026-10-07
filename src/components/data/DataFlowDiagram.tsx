@@ -14,17 +14,17 @@ export function DataFlowDiagram() {
         <title>From sources to dashboards</title>
         <defs>
           <linearGradient id="data-flow-stroke" x1="0" y1="0" x2="880" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#94a3b8" />
-            <stop offset="45%" stopColor="#0ea5e9" />
-            <stop offset="100%" stopColor="#0369a1" />
+            <stop offset="0%" stopColor="#8a968f" />
+            <stop offset="45%" stopColor="#2a7a6c" />
+            <stop offset="100%" stopColor="#0f3d38" />
           </linearGradient>
           <linearGradient id="data-node-source" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#ffffff" />
             <stop offset="100%" stopColor="#f8fafc" />
           </linearGradient>
           <linearGradient id="data-node-transform" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#f0f9ff" />
-            <stop offset="100%" stopColor="#e0f2fe" />
+            <stop offset="0%" stopColor="#eef8f5" />
+            <stop offset="100%" stopColor="#d8efe9" />
           </linearGradient>
           <linearGradient id="data-node-warehouse" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#fafafa" />
@@ -46,7 +46,7 @@ export function DataFlowDiagram() {
             orient="auto"
             markerUnits="strokeWidth"
           >
-            <path d="M0,0 L8,4 L0,8 Z" fill="#0284c7" />
+            <path d="M0,0 L8,4 L0,8 Z" fill="#16524b" />
           </marker>
         </defs>
 
@@ -55,7 +55,7 @@ export function DataFlowDiagram() {
           x="76"
           y="22"
           textAnchor="middle"
-          fill="#94a3b8"
+          fill="#8a968f"
           className="select-none font-semibold uppercase"
           style={{ fontSize: "9px", letterSpacing: "0.14em" }}
         >
@@ -65,7 +65,7 @@ export function DataFlowDiagram() {
           x="292"
           y="22"
           textAnchor="middle"
-          fill="#94a3b8"
+          fill="#8a968f"
           className="select-none font-semibold uppercase"
           style={{ fontSize: "9px", letterSpacing: "0.14em" }}
         >
@@ -75,7 +75,7 @@ export function DataFlowDiagram() {
           x="486"
           y="22"
           textAnchor="middle"
-          fill="#94a3b8"
+          fill="#8a968f"
           className="select-none font-semibold uppercase"
           style={{ fontSize: "9px", letterSpacing: "0.14em" }}
         >
@@ -85,7 +85,7 @@ export function DataFlowDiagram() {
           x="714"
           y="22"
           textAnchor="middle"
-          fill="#94a3b8"
+          fill="#8a968f"
           className="select-none font-semibold uppercase"
           style={{ fontSize: "9px", letterSpacing: "0.14em" }}
         >
@@ -176,7 +176,7 @@ export function DataFlowDiagram() {
           fill="none"
         />
 
-        <circle cx="236" cy="120" r="4" fill="#0ea5e9" opacity="0.85" />
+        <circle cx="236" cy="120" r="4" fill="#2a7a6c" opacity="0.85" />
 
         {/* Transform */}
         <rect
@@ -186,7 +186,7 @@ export function DataFlowDiagram() {
           height="64"
           rx="11"
           fill="url(#data-node-transform)"
-          stroke="#7dd3fc"
+          stroke="#7ec8b8"
           strokeWidth="1.15"
           filter="url(#data-card-shadow)"
           className="data-flow-node-pulse"
@@ -195,13 +195,13 @@ export function DataFlowDiagram() {
           x="302"
           y="114"
           textAnchor="middle"
-          fill="#0c4a6e"
+          fill="#0f3d38"
           className="font-semibold"
           style={{ fontSize: "11px" }}
         >
           Clean &amp; transform
         </text>
-        <text x="302" y="132" textAnchor="middle" fill="#0369a1" style={{ fontSize: "8px" }}>
+        <text x="302" y="132" textAnchor="middle" fill="#0f3d38" style={{ fontSize: "8px" }}>
           dbt · tests · quality gates
         </text>
 
@@ -274,15 +274,15 @@ export function DataFlowDiagram() {
         </text>
 
         {/* Mini chart mock */}
-        <rect x="612" y="108" width="36" height="52" rx="3" fill="#e0f2fe" stroke="#bae6fd" strokeWidth="0.75" />
-        <rect x="618" y="128" width="8" height="26" rx="1" fill="#0ea5e9" opacity="0.85" />
-        <rect x="630" y="118" width="8" height="36" rx="1" fill="#0284c7" opacity="0.9" />
-        <rect x="642" y="124" width="8" height="30" rx="1" fill="#0369a1" opacity="0.85" />
+        <rect x="612" y="108" width="36" height="52" rx="3" fill="#d8efe9" stroke="#b5ddd4" strokeWidth="0.75" />
+        <rect x="618" y="128" width="8" height="26" rx="1" fill="#2a7a6c" opacity="0.85" />
+        <rect x="630" y="118" width="8" height="36" rx="1" fill="#16524b" opacity="0.9" />
+        <rect x="642" y="124" width="8" height="30" rx="1" fill="#0f3d38" opacity="0.85" />
 
         <rect x="664" y="108" width="36" height="52" rx="3" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="0.75" />
         <path
           d="M 668 148 L 676 132 L 684 140 L 692 124 L 696 128"
-          stroke="#0284c7"
+          stroke="#16524b"
           strokeWidth="1.5"
           fill="none"
           strokeLinecap="round"

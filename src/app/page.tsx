@@ -1,37 +1,39 @@
-import { About } from "@/components/About";
-import { AISolutions } from "@/components/AISolutions";
-import { CapacityBuildingPreview } from "@/components/CapacityBuildingPreview";
-import { Contact } from "@/components/Contact";
-import { DataAnalytics } from "@/components/DataAnalytics";
 import { Footer } from "@/components/Footer";
+import { GetInTouchBand } from "@/components/GetInTouchBand";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Portfolio } from "@/components/Portfolio";
+import { Integrations } from "@/components/Integrations";
+import { ProductStory } from "@/components/ProductStory";
+import { ScrollExperience } from "@/components/ScrollExperience";
+import { Sectors } from "@/components/Sectors";
 import { Services } from "@/components/Services";
+import { Testimonials } from "@/components/Testimonials";
+import { TrustStrip } from "@/components/TrustStrip";
 import { WhyChoose } from "@/components/WhyChoose";
 
 export default function Home() {
   return (
-    <>
+    <div className="page-aura min-h-full overflow-x-clip">
+      <ScrollExperience />
       <a
         href="#main"
-        className="focus-ring absolute left-4 top-4 z-[100] -translate-y-[200%] rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-semibold text-neutral-950 shadow-sm transition-transform focus:translate-y-0"
+        className="focus-ring absolute left-4 top-4 z-[120] -translate-y-[200%] rounded-full border border-[var(--brand-border)] bg-white px-4 py-2 text-sm font-semibold text-[var(--brand-ink)] shadow-sm transition-transform focus:translate-y-0"
       >
         Skip to main content
       </a>
       <Header />
-      <main id="main">
+      <main id="main" className="relative z-[1]">
         <Hero />
-        <About />
-        <AISolutions />
-        <DataAnalytics />
+        <TrustStrip />
+        <ProductStory />
         <Services />
-        <CapacityBuildingPreview />
         <WhyChoose />
-        <Portfolio />
-        <Contact />
+        <Integrations />
+        <Testimonials />
+        <Sectors />
+        <GetInTouchBand />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
